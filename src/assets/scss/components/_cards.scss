@@ -1,0 +1,135 @@
+@use "../abstracts/" as *;
+
+// .#{$prefix} {
+//   &card {
+//     display: grid;
+//     gap: $card-flow-spacing;
+//     padding: $card-padding;
+//     background-color: $card-background-default;
+//     font-family: $card-font-family;
+//     color: $card-color-default;
+//     line-height: $card-line-height;
+//     box-shadow: $card-shadow;
+//     border-radius: $card-border-radius;
+
+//     &__heading {
+//       @include heading($card-heading-font-size, $card-heading-color-default);
+//     }
+
+//     &__type {
+//       &--testimonial {
+//         padding: $size-6;
+//         box-shadow: none;
+//         border-radius: 1.5rem;
+//         @include mq(lg) {
+//           padding: $size-8;
+//         }
+//       }
+//     }
+//   }
+// }
+
+.hmh-card {
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
+  &:hover {
+    a > .title {
+      color: var(--primary-400);
+    }
+    a > .ims-card__image {
+      background-color: var(--primary-100);
+    }
+  }
+
+  &__image {
+    background-color: var(--primary-100);
+    @include aspect-ratio(1, 1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  &__content {
+    .title {
+      font-size: var(--fs-400);
+      font-weight: 400;
+      color: var(--neutral-900);
+      line-height: 1.5;
+    }
+  }
+
+  &--product {
+    &.ims-card {
+      margin-bottom: 0;
+    }
+    .ims-card {
+      &__image {
+        background-color: var(--neutral-100);
+        margin-bottom: 0.5rem;
+      }
+      &__content {
+        .title {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &--gallery {
+    position: relative;
+
+    .ims-card {
+      &__content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transition: transform 300ms ease-in-out;
+        .caption {
+          background-color: rgba(41, 77, 87, 0.4);
+          padding: 0.5rem 1rem;
+          color: var(--neutral-0);
+          border-bottom-left-radius: 0.5rem;
+          border-bottom-right-radius: 0.5rem;
+          & > p {
+            font-size: var(--fs-300);
+          }
+        }
+      }
+    }
+  }
+
+  &__alignment {
+    &--horizontal {
+      .ims-card {
+        &__image {
+          @include aspect-ratio(95, 69);
+        }
+      }
+    }
+  }
+}
+
+.icon-blurb {
+  &__content {
+    margin-top: 0.5rem;
+    p {
+      // text-align: justify;
+    }
+    ul {
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .infograph-card {
+    margin-bottom: 1.5rem;
+    &__topic,
+    &__info {
+      font-size: var(--fs-400);
+    }
+
+    &__figure {
+      font-size: 1.5rem;
+    }
+  }
+}

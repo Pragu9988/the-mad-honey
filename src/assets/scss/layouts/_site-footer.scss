@@ -1,0 +1,40 @@
+@use "../abstracts/" as *;
+
+.#{$prefix} {
+  &site-footer {
+    background-color: $footer-background-color;
+    color: $footer-text-color;
+    padding-block-start: $size-10;
+    padding-block-end: $size-6;
+
+    a {
+      color: $footer-link-color;
+      text-decoration: $footer-link-text-decoration;
+      font-family: $footer-link-font-family;
+      letter-spacing: $letter-spacing-loose;
+
+      &:is(:hover, :focus) {
+        color: $footer-link-color-hover;
+      }
+    }
+  }
+
+  &footer-credit {
+
+  }
+
+  &footer-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-end: $size-6;
+
+    &__navbar {
+
+    }
+  }
+
+  &footer-feature {
+    border-radius: 1.5rem;
+  }
+}

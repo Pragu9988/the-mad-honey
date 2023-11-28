@@ -8,3 +8,10 @@ export type SiteConfig = {
     github: string;
   };
 };
+
+export interface BannerType {
+  title: any;
+  subtitle?: string;
+  btnLabel?: string;
+  link?: string;
+}

@@ -1,0 +1,10 @@
+@use "../abstracts" as *;
+
+.#{$prefix} {
+  &gradient-1 {
+    background: $radial-gradient-1;
+  }
+  &gradient-l-1 {
+    background: $linear-gradient-1;
+  }
+}

@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+
+.#{$prefix} {
+  &navbar {
+    --flex-column-gap: #{$navigation-gap};
+    list-style: none;
+    font-family: $navigation-font-family;
+    font-weight: $navigation-font-weight;
+
+    a {
+      color: $navigation-color;
+      text-decoration: $navigation-link-text-decoration;
+      text-transform: uppercase;
+
+      &:is(:hover, :focus) {
+        color: $navigation-color-hover;
+      }
+    }
+
+    &__menu-item {
+      padding-block: 1rem;
+    }
+
+  }
+}

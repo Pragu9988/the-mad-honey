@@ -1,0 +1,9 @@
+@use "../abstracts/" as *;
+
+.#{$prefix} {
+  &rich-content {
+    p {
+      margin-bottom: $size-4;
+    }
+  }
+}

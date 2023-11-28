@@ -1,0 +1,172 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use "breakpoints" as *;
+@use "tokens" as *;
+
+@mixin mq($size) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map-get($breakpoints, $size);
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  } @else if meta.type-of($size) == number {
+    @if math.is-unitless($size) {
+      @error 'when using a number with @mq() make sure to include a unit';
+    } @else {
+      @media screen and (min-width: $size) {
+        @content;
+      }
+    }
+  } @else {
+    @error 'the keyword #{$size} is not in the $breakpoints map';
+  }
+}
+
+@mixin heading($fs, $color: $heading-color-default) {
+  font-size: $fs;
+  color: $color;
+
+  font-family: $heading-font-family;
+  text-transform: $heading-text-transform;
+  letter-spacing: $heading-letter-spacing;
+  font-weight: $heading-font-weight;
+  line-height: $heading-line-height;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: calc($height / $width) * 100%;
+  }
+  > img,
+  > img.ims-image,
+  > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@mixin scroll-bar() {
+  &::-webkit-scrollbar {
+    width: 0.25rem; /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--clr-neutral-200); /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--clr-primary-400); /* color of the scroll thumb */
+    border-radius: 5px;
+  }
+}
+
+@mixin hover-effect(
+  $loc: after,
+  $content: "",
+  $pos: absolute,
+  $top: unset,
+  $bottom: 10px,
+  $left: 0,
+  $height: 3px,
+  $bgClr: var(--clr-primary-400),
+  $clr: var(--clr-primary-400)
+) {
+  position: relative;
+  z-index: var(--zAbove);
+  @content;
+
+  &::#{$loc} {
+    content: $content;
+    position: $pos;
+    width: 55px;
+    height: $height;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    background-color: $bgClr;
+    // transform: scaleX(0);
+    transform-origin: right;
+    transition: width 0.25s ease-in-out;
+    z-index: var(--zBelow);
+  }
+
+  &:hover {
+    color: $clr;
+    transition: color 0.25s ease-in-out;
+    z-index: var(--zAbove);
+
+    &::#{$loc} {
+      // transform: scaleX(1);
+      width: 90%;
+      transform-origin: left;
+      transition: width 0.25s ease-in-out;
+    }
+  }
+}
+
+@mixin hover-zoom($scale: 1.125, $rotate: 10deg) {
+  overflow: hidden;
+
+  & img {
+    transition: transform 0.25s ease-in-out;
+  }
+
+  &:hover img {
+    transform: scale($scale) rotate($rotate);
+  }
+}
+
+@mixin gradient($direction, $list) {
+  background: linear-gradient($direction, $list);
+}
+
+@mixin hover-menu(
+  $loc: after,
+  $content: "",
+  $pos: absolute,
+  $top: unset,
+  $bottom: -8px,
+  $left: 0,
+  $height: 2px,
+  $clr: var(--clr-primary-400)
+) {
+  position: relative;
+  z-index: var(--zAbove);
+  @content;
+
+  &::#{$loc} {
+    content: $content;
+    position: $pos;
+    height: $height;
+    width: 100%;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    scale: 0 1;
+    transform-origin: center;
+    transition: scale 0.25s ease-in-out;
+    z-index: var(--zBelow);
+    background-color: var(--clr-primary-400);
+  }
+
+  &:hover {
+    color: $clr;
+    z-index: var(--zAbove);
+    &::#{$loc} {
+      scale: 1 1;
+      transform-origin: center;
+      transition: scale 0.25s ease-in-out;
+    }
+  }
+}

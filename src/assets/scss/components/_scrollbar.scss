@@ -1,0 +1,14 @@
+@use "../abstracts/" as *;
+
+body::-webkit-scrollbar {
+  width: $scrollbar-width; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: $scrollbar-track-background; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb-background; /* color of the scroll thumb */
+  border-radius: $scrollbar-border-radius;
+}

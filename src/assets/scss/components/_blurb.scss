@@ -1,0 +1,32 @@
+@use "../abstracts/" as *;
+
+.#{$prefix} {
+  &blurb {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    &__placement {
+      &--top {
+        flex-direction: column;
+      }
+
+      &--left {
+        flex-direction: row;
+      }
+    }
+
+    &__alignment {
+      &--left {
+        align-items: start;
+        justify-content: center;
+      }
+
+      &--right {
+      }
+
+      &--center {
+      }
+    }
+  }
+}
