@@ -26,46 +26,12 @@ const cardVariants = cva("hmh-card", {
 });
 
 type TProps = VariantProps<typeof cardVariants> & {
-  title?: string;
+  product: any;
   className?: string;
-  imgSrc?: any;
-  caption?: string;
-  link?: string;
-  linkTarget?: string;
-  excerpt?: string;
-  publishedDate?: string;
-  id?: string;
-  slug?: string;
-  imgHeight?: number;
-  imgWidth?: number;
-  priority?: boolean;
-  vacancy?: {
-    department?: string;
-    location?: string;
-    deadline?: string;
-    startDate?: Date;
-    applyLink?: string;
-  };
 };
 
-const CardProduct = ({
-  title,
-  className,
-  excerpt,
-  imgSrc,
-  link,
-  type,
-  alignment,
-  vacancy,
-  publishedDate,
-  linkTarget,
-  caption,
-  imgHeight,
-  imgWidth,
-  priority,
-  id,
-  slug,
-}: TProps) => {
+const CardProduct = ({ product, className, type, alignment }: TProps) => {
+  console.log(product.images[0].src)
   return (
     <div
       className={cn(
@@ -73,8 +39,8 @@ const CardProduct = ({
         cardVariants({ type, alignment, className })
       )}
     >
-      {imgSrc && (
-        <Anchor path={"/"} target={linkTarget ?? "_self"}>
+      {product.images[0] && (
+        <Anchor path={`/${product.slug}`} target={"_self"}>
           <div
             className={cn(
               "hmh-card__image mb-4",
@@ -82,22 +48,19 @@ const CardProduct = ({
             )}
           >
             <Image
-              src={imgSrc}
-              alt={title ?? "Gallery Image"}
-              width={imgWidth ?? 500}
-              height={imgHeight ?? 500}
+              src={product.images[0].src}
+              alt={product.name ?? "Gallery Image"}
+              width={500}
+              height={500}
               quality={75}
-              // fill
-              // objectFit='contain'
-              className={cn("tw-object-contain")}
+              className={cn("object-contain")}
               placeholder="blur"
               blurDataURL={DefaultImg.src}
-              priority={priority ?? false}
             />
           </div>
         </Anchor>
       )}
-      {title ? (
+      {product.name ? (
         <div
           className={cn(
             "hmh-card__content space-y-2",
@@ -105,7 +68,7 @@ const CardProduct = ({
           )}
         >
           <Anchor path={"/"} target="_self">
-            <h3 className={`title`}>{title}</h3>
+            <h3 className={`title`}>{product.name}</h3>
           </Anchor>
           {/* TODO style caption */}
           {/* {caption ? (
@@ -123,7 +86,11 @@ const CardProduct = ({
             dangerouslySetInnerHTML={{ __html: sanitize(excerpt) }}
           /> */}
           <div className="price-container">
-            <Price />
+            <Price
+              price={product.price}
+              regularPrice={product?.regular_price}
+              salePrice={product?.sale_price}
+            />
           </div>
           <div className="cta">
             <Button variant={"link"}>Add to cart</Button>

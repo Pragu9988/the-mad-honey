@@ -4,6 +4,7 @@ import Header from "@/components/modules/Header/Header";
 import Footer from "@/components/modules/Footer/Footer";
 import SubscribeCta from "@/components/sections/Newsletter";
 import "@/assets/scss/main.scss";
+import TanstackProvider from "@/providers/tanstack.providers";
 
 const primary = Montserrat({
   subsets: ["latin"],
@@ -24,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${primary.variable} ${accent.variable}`}>
-        <Header />
-        <main className="main">{children}</main>
-        <SubscribeCta />
-        <Footer />
+        <TanstackProvider>
+          <Header />
+          <main className="main">{children}</main>
+          <SubscribeCta />
+          <Footer />
+        </TanstackProvider>
       </body>
     </html>
   );
