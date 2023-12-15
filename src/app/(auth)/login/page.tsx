@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import LoginForm from "@/components/sections/LoginForm/LoginForm";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -6,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  return <h1>Login Page</h1>;
+  return <LoginForm />;
 }

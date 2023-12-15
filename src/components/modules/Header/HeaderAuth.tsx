@@ -8,44 +8,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Logo from "../Logo";
 
 const HeaderAuth = () => {
-  const authMenu = [
-    {
-      label: "Login",
-      link: "/login",
-    },
-    {
-      label: "Signup",
-      link: "/signup",
-    },
-  ];
-
-  const profileMenu = [
-    {
-      label: "My Profile",
-      link: "/my-account#profile",
-    },
-    {
-      label: "My Order",
-      link: "/my-account#order",
-    },
-  ];
   return (
-    <div className="hmh-header-auth">
-      <DropdownMenu>
-        <DropdownMenuTrigger className="align-middle">
-          <User size={20} strokeWidth={1.5} />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>My Order</DropdownMenuItem>
-          <DropdownMenuItem>My Purchase</DropdownMenuItem>
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <div className="site-top">
+      <header id="site-header" className="main-header bg-white border-b py-2">
+        <div className="container mx-auto">
+          <div className="flex items-center justify-center gap-4">
+            <Logo />
+          </div>
+        </div>
+      </header>
     </div>
   );
 };

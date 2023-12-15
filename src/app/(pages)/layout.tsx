@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat, Karla } from "next/font/google";
+import Header from "@/components/modules/Header/Header";
+import Footer from "@/components/modules/Footer/Footer";
+import SubscribeCta from "@/components/sections/Newsletter";
 import "@/assets/scss/main.scss";
 import TanstackProvider from "@/providers/tanstack.provider";
 
@@ -22,7 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${primary.variable} ${accent.variable}`}>
-        <TanstackProvider>{children}</TanstackProvider>
+        <TanstackProvider>
+          <Header />
+          <main className="main">{children}</main>
+          <SubscribeCta />
+          <Footer />
+        </TanstackProvider>
       </body>
     </html>
   );

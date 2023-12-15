@@ -1,11 +1,11 @@
 import React from "react";
-import HeaderAuth from "./HeaderAuth";
+import DropdownAuth from "../Dropdowns/DropdownAuth";
 import { Heart, SearchIcon, ShoppingBag } from "lucide-react";
 import OffCanvasCart from "../OffCanvas/OffCanvasCart";
 import OffCanvasSearch from "../OffCanvas/OffCanvasSearch";
 import ModalFavorites from "../Modals/ModalFavorites";
 
-const HeaderIcons = () => {
+const NavbarIcons = () => {
   return (
     <div className="hmh-header-icons">
       <ul className="hmh-header-icons__list flex items-center gap-4">
@@ -25,11 +25,11 @@ const HeaderIcons = () => {
           </OffCanvasCart>
         </li>
         <li className="hmh-header-icons__item">
-          <HeaderAuth />
+          <DropdownAuth />
         </li>
       </ul>
     </div>
   );
 };
 
-export default HeaderIcons;
+export default NavbarIcons;

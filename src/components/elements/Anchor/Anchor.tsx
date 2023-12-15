@@ -100,7 +100,7 @@ const Anchor = ({
   );
 };
 
-Anchor.defaultProps = defaultProps;
+// Anchor.defaultProps = defaultProps;
 
 Anchor.displayName = "Anchor";
 

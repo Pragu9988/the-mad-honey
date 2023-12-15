@@ -3,7 +3,7 @@
 import React from "react";
 import menus from "@/data/menus";
 import NavbarItem from "./NavbarItem";
-import HeaderIcons from "../Header/HeaderIcons";
+import NavbarIcons from "./NavbarIcons";
 
 const Navbar = () => {
   console.log("menu", menus);
@@ -25,7 +25,7 @@ const Navbar = () => {
           })}
         </ul>
       </nav>
-      <HeaderIcons />
+      <NavbarIcons />
     </div>
   );
 };

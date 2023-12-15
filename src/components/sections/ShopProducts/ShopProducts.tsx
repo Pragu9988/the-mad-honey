@@ -1,3 +1,5 @@
+"use client";
+
 import CardProduct from "@/components/modules/Cards/CardProduct";
 import products from "@/data/products";
 import React from "react";
@@ -10,8 +12,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useProducts } from "@/services/products.service";
+import { IProduct } from "@/types";
 
-const ShopProducts = () => {
+type TProps = {
+  data?: IProduct[];
+};
+
+const ShopProducts = ({ data }: TProps) => {
+  const {
+    data: products,
+    isLoading: productsLoading,
+    isError: productsError,
+  } = useProducts(data);
+
   return (
     <section className="featured-product py-4 md:py-8 lg:py-10">
       <div className="container mx-auto space-y-6">
@@ -33,11 +47,8 @@ const ShopProducts = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
-          {products.map((product, index) => {
-            return <CardProduct title={product.title} imgSrc={DefaultImg} />;
-          })}
-          {products.map((product, index) => {
-            return <CardProduct title={product.title} imgSrc={DefaultImg} />;
+          {products?.map((product: any, index: number) => {
+            return <CardProduct product={product} />;
           })}
         </div>
       </div>
