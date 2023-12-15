@@ -1,16 +1,15 @@
-import axios from "axios";
 import { cache } from "react";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import config from "@/config/api.config";
 import wooAuth from "./wooAuth.service";
 import { IProduct } from "@/types";
+import { WOO_PRODUCT_EP } from "@/config/endpoints.config";
 
 const fetchProducts = cache(
   async (params: Record<string, any>): Promise<IProduct[]> => {
-    const response = await wooAuth.get("/products", {
+    const response = await wooAuth.get(WOO_PRODUCT_EP, {
       params: params,
     });
-    console.log("res", response);
     return response.data;
   }
 );

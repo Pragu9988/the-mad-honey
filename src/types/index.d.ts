@@ -87,3 +87,15 @@ export interface IProduct {
   menu_order: number;
   meta_data: any[]; // Define the type of meta data as needed
 }
+
+export interface AuthContextProps {
+  user: User | null;
+  login: (values: { username: string; password: string }) => Promise<string>;
+  logout: () => void;
+  isAuthenticated: boolean;
+  loading: boolean;
+}
+
+export interface User {
+  // Define your user data structure
+}

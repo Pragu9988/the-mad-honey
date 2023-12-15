@@ -4,7 +4,7 @@ import { VariantProps, cva } from "class-variance-authority";
 
 import { cn } from "@/utils/cn.utils";
 
-const buttonVariants = cva("hmh-button", {
+const buttonVariants = cva("hmh-button h-12", {
   variants: {
     variant: {
       primary: "hmh-button--primary",
