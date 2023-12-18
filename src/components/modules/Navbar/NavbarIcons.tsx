@@ -4,8 +4,10 @@ import { Heart, SearchIcon, ShoppingBag } from "lucide-react";
 import OffCanvasCart from "../OffCanvas/OffCanvasCart";
 import OffCanvasSearch from "../OffCanvas/OffCanvasSearch";
 import ModalFavorites from "../Modals/ModalFavorites";
+import { useCart } from "@/context/cart.context";
 
 const NavbarIcons = () => {
+  const { cart } = useCart();
   return (
     <div className="hmh-header-icons">
       <ul className="hmh-header-icons__list flex items-center gap-4">
@@ -21,7 +23,14 @@ const NavbarIcons = () => {
         </li>
         <li className="hmh-header-icons__item">
           <OffCanvasCart>
-            <ShoppingBag size={20} strokeWidth={1.5} />
+            <div className="relative">
+              <ShoppingBag size={20} strokeWidth={1.5} />
+              {cart ? (
+                <span className="bg-accent text-white w-4 h-4 rounded-full flex items-center justify-center text-xs font-medium absolute -top-2 -right-2">
+                  {cart?.item_count}
+                </span>
+              ) : null}
+            </div>
           </OffCanvasCart>
         </li>
         <li className="hmh-header-icons__item">

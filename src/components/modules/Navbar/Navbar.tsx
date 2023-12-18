@@ -6,7 +6,6 @@ import NavbarItem from "./NavbarItem";
 import NavbarIcons from "./NavbarIcons";
 
 const Navbar = () => {
-  console.log("menu", menus);
   return (
     <div className=" flex gap-8 items-center justify-between">
       <nav className="hmh-navbar nav-main-menu text-sm font-semibold tracking-wide">

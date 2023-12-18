@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/context/auth.context";
 import { Button } from "@/components/elements/Buttons/Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const DropdownAuth = () => {
   const { user, isAuthenticated, loading, logout } = useAuth();
@@ -47,12 +48,21 @@ const DropdownAuth = () => {
         <DropdownMenuContent className=" min-w-[200px]">
           {isAuthenticated ? (
             <>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>
+                <div className="flex justify-start items-center gap-2">
+                  <Avatar className="w-8 h-8">
+                    <AvatarImage src={user?.avatar_url} />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <p className="user-name text-sm">{user?.username}</p>
+                </div>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>My Order</DropdownMenuItem>
+              <DropdownMenuItem>Addresses</DropdownMenuItem>
               <DropdownMenuItem>My Purchase</DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout} className=" text-destructive cursor-pointer">Logout</DropdownMenuItem>
             </>
           ) : (
             <div className="space-y-4 p-4">

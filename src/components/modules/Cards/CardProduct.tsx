@@ -1,11 +1,12 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import Anchor from "@/components/elements/Anchor";
 import { cn } from "@/utils/cn.utils";
-import { sanitize } from "@/utils/sanitize.uitls";
 import { VariantProps, cva } from "class-variance-authority";
 import DefaultImg from "@/assets/images/img-default-banner.png";
-import { Button } from "@/components/elements/Buttons/Button";
 import Price from "@/components/elements/Price/Price";
+import AddToCart from "@/components/elements/AddToCart";
 
 const cardVariants = cva("hmh-card", {
   variants: {
@@ -31,7 +32,7 @@ type TProps = VariantProps<typeof cardVariants> & {
 };
 
 const CardProduct = ({ product, className, type, alignment }: TProps) => {
-  console.log(product.images[0].src)
+
   return (
     <div
       className={cn(
@@ -93,7 +94,7 @@ const CardProduct = ({ product, className, type, alignment }: TProps) => {
             />
           </div>
           <div className="cta">
-            <Button variant={"link"}>Add to cart</Button>
+            <AddToCart productId={product.id} />
           </div>
         </div>
       ) : null}

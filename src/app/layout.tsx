@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, Karla } from "next/font/google";
-import "@/assets/scss/main.scss";
 import TanstackProvider from "@/providers/tanstack.provider";
 import AuthProvider from "@/providers/auth.provider";
+import CartProvider from "@/providers/cart.provider";
+import { Toaster } from "@/components/ui/toaster";
+import { Montserrat, Karla } from "next/font/google";
+import "@/assets/scss/main.scss";
 
 const primary = Montserrat({
   subsets: ["latin"],
@@ -24,8 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${primary.variable} ${accent.variable}`}>
         <TanstackProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <CartProvider>{children}</CartProvider>
+          </AuthProvider>
         </TanstackProvider>
+        <Toaster />
       </body>
     </html>
   );

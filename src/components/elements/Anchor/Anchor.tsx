@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const defaultProps = {
   target: "_blank",
-  rel: "noopener noreferrer",
+  // rel: "noopener noreferrer",
 };
 
 type TProps = typeof defaultProps &
@@ -26,7 +26,6 @@ const Anchor = ({
   path,
   children,
   className,
-  rel,
   target,
   onClick,
   onKeyPress,
@@ -54,7 +53,6 @@ const Anchor = ({
     if (isHash) {
       return (
         <a
-          rel={rel}
           className={className}
           href={path}
           onClick={onClick}
@@ -70,7 +68,6 @@ const Anchor = ({
     }
     return (
       <a
-        rel={rel}
         className={className}
         href={path}
         target={target}

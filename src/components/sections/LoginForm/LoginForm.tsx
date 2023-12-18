@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/elements/Buttons/Button";
 import { useAuth } from "@/context/auth.context";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Form,
   FormControl,
@@ -28,6 +29,7 @@ const formSchema = z.object({
 });
 
 const LoginForm = () => {
+  const { toast } = useToast();
   const { user, login, logout, isAuthenticated, loading } = useAuth();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,15 +43,23 @@ const LoginForm = () => {
     // Do something with the form values.
     login(values);
     // ✅ This will be type-safe and validated
-    console.log(values);
+    if (isAuthenticated) {
+      toast({
+        description: "User logged in successfully.",
+      });
+    }
   }
 
   return (
-    <section className="login-section bg-primary-50 py-8 md:py-10 lg:py-16">
+    <section className="login-section pb-8 md:pb-10 lg:pb-16 space-y-8 md:space-y-10">
+      <div className="login-section__heading bg-accent-100 py-6 md:py-8">
+        <div className="container mx-auto">
+          <h1 className="text-4xl text-primary-500 font-bold text-center">
+            Login
+          </h1>
+        </div>
+      </div>
       <div className="container mx-auto">
-        <h1 className="text-4xl text-primary-500 font-bold text-center mb-8">
-          Login
-        </h1>
         <div className="login-form__wrapper max-w-sm mx-auto">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

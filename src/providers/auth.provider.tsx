@@ -9,14 +9,14 @@ import {
   logout,
 } from "@/services/auth.service";
 import { fetchCustomerData } from "@/services/customer.service";
-import { AuthContextProps, User } from "@/types";
+import { AuthContextProps, IUser } from "@/types";
 import Cookies from "js-cookie";
 import { isNull } from "lodash";
 
 const userId = Number(Cookies.get("userId"));
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

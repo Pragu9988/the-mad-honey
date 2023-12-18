@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext } from "react";
 
-import { AuthContextProps, User } from "@/types";
+import { AuthContextProps } from "@/types";
 
 export const AuthContext = createContext<AuthContextProps>({
   user: null,

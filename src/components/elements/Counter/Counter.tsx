@@ -16,14 +16,14 @@ const Counter = () => {
     }
   };
   return (
-    <div className="price-counter border border-accent-300 p-2 items-center inline-flex bg-white rounded-sm">
-      <button className="px-2" onClick={decrement}>
-        <Minus size={20} />
+    <div className="price-counter items-center inline-flex bg-gray-100 p-0.5 rounded-sm">
+      <button className="p-1 text-white bg-accent hover:bg-accent-400 rounded" onClick={decrement}>
+        <Minus size={18} />
       </button>
-      <span className="px-2 w-8 text-lg text-center">{count}</span>
-      <button className="px-2" onClick={increment}>
+      <span className="px-2 w-fit text-base text-left">{count}</span>
+      <button className="p-1 text-white bg-accent hover:bg-accent-400 rounded" onClick={increment}>
         {" "}
-        <Plus size={20} />
+        <Plus size={18} />
       </button>
     </div>
   );

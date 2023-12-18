@@ -18,7 +18,6 @@ const FeaturedProductGrid = () => {
   } = useProducts(null, params);
 
   const skeletons = Array.from(new Array(Math.floor(5)), (_x, i) => i + 1);
-  console.log();
   return (
     <section className="featured-product py-8 md:py-10 lg:py-20">
       <div className="container mx-auto space-y-10">
@@ -30,7 +29,7 @@ const FeaturedProductGrid = () => {
             ))}
           {products &&
             products.map((product: any, index: number) => {
-              return <CardProduct product={product} />;
+              return <CardProduct product={product} key={product.id} />;
             })}
         </div>
       </div>
