@@ -8,6 +8,7 @@ export const AuthContext = createContext<AuthContextProps>({
   user: null,
   login: async () => "",
   logout: () => {},
+  signup: async () => "",
   isAuthenticated: false,
   loading: true,
 });

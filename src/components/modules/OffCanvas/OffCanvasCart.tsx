@@ -20,7 +20,7 @@ type TProps = {
 
 const OffCanvasCart = ({ children }: TProps) => {
   const { openCart, setOpenCart, cart, clearCart } = useCart();
-  console.log("abc", cart);
+  console.log("abc", cart?.totals);
   return (
     <div className="cart-offcanvas">
       <Sheet open={openCart} onOpenChange={setOpenCart}>
@@ -30,25 +30,40 @@ const OffCanvasCart = ({ children }: TProps) => {
             <SheetTitle>Your Cart ({cart?.item_count})</SheetTitle>
             <SheetDescription>
               {cart?.items ? (
-                <div className="cart-content">
-                  <div className="cart-list space-y-4">
-                    {cart?.items.map((product: ICartItem, index: number) => {
-                      return <CardCart product={product} key={product.id} />;
-                    })}
-                  </div>
-                  <div className="clear-cart">
-                    <Button
-                      variant={"accent"}
-                      onClick={clearCart}
-                      className="h-8 w-full"
-                      size={"sm"}
-                    >
-                      Clear Cart
-                    </Button>
-                  </div>
-                  <div className="cart-xsell"></div>
-                  <div className="cart-footer">
-                    <div className="calculate-price"></div>
+                <div className="">
+                  <div className="cart-content  flex flex-col justify-between">
+                    <div className="cart-list space-y-4 py-6">
+                      {cart?.items.map((product: ICartItem, index: number) => {
+                        return <CardCart product={product} key={product.id} />;
+                      })}
+                      <div className="clear-cart">
+                        <Button
+                          variant={"accent"}
+                          onClick={clearCart}
+                          className="h-8"
+                          size={"sm"}
+                        >
+                          Clear Cart
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="cart-footer">
+                      <div className="cart-xsell"></div>
+                      <div className="cart-total py-4 space-y-3 border-t border-gray-200">
+                        <div className="flex items-baseline justify-between text-gray-800">
+                          <h4 className="text-sm font-medium">Subtotal</h4>
+                          <div className="text-sm font-semibold">{cart?.totals?.subtotal}</div>
+                        </div>
+                        <div className="flex items-baseline justify-between text-gray-800">
+                          <h4 className="text-lg font-medium">Total</h4>
+                          <div className="text-lg font-semibold">{cart?.totals?.total}</div>
+                        </div>
+                        <hr />
+                        <Button variant={"accent"} className="w-full">
+                          Checkout
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ) : (

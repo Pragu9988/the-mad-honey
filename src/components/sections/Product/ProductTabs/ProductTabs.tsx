@@ -1,7 +1,12 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { IProduct } from "@/types";
 
-const ProductTabs = () => {
+type TProps = {
+  product: IProduct;
+};
+
+const ProductTabs = ({ product }: TProps) => {
   return (
     <div className="product-tabs py-8 md:py-10 lg:py-10">
       <div className="container mx-auto">

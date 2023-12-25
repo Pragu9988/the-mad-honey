@@ -7,11 +7,12 @@ import {
   authenticateUser,
   isAuthenticated,
   logout,
+  signup,
 } from "@/services/auth.service";
 import { fetchCustomerData } from "@/services/customer.service";
 import { AuthContextProps, IUser } from "@/types";
 import Cookies from "js-cookie";
-import { isNull } from "lodash";
+import { isEmpty, isNull } from "lodash";
 
 const userId = Number(Cookies.get("userId"));
 
@@ -48,6 +49,23 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const signupUser = async (values: any) => {
+    try {
+      const userData = await signup(values);
+      setUser(userData);
+
+      if (!isNull(userData) && !isEmpty(userData)) {
+        const token = await authenticateUser(
+          userData.username,
+          values.password
+        );
+        return token;
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
   const logoutUser = () => {
     logout();
     setUser(null);
@@ -56,6 +74,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const authValues: AuthContextProps = {
     user,
     login,
+    signup: signupUser,
     logout: logoutUser,
     isAuthenticated: !!user,
     loading,

@@ -1,7 +1,9 @@
 import axios from "axios";
 import config from "@/config/api.config";
 import Cookies from "js-cookie";
-import { JWT_AUTH_EP } from "@/config/endpoints.config";
+import { JWT_AUTH_EP, WOO_CUSTOMERS_EP } from "@/config/endpoints.config";
+import generateFormData from "@/utils/generateFormData.utils";
+import wooAuth from "./wooAuth.service";
 
 const jwtAuth = axios.create({
   baseURL: config.siteUrl,
@@ -37,4 +39,16 @@ export const logout = () => {
   Cookies.remove("authToken");
   Cookies.remove("userId");
   // Additional cleanup
+};
+
+export const signup = async (values: any) => {
+  const formData = generateFormData(values);
+
+  try {
+    const response = await wooAuth.post(WOO_CUSTOMERS_EP, formData);
+    return response.data;
+  } catch (error) {
+    console.error("User Registration Error:", error);
+    throw error;
+  }
 };

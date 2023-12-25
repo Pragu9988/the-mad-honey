@@ -34,7 +34,7 @@ const NavbarItem = ({
         id={id}
         className={clsx(
           "main-menu",
-          color === "light" && "text-white hover:text-white",
+          color === "light" && "text-gray-200 hover:text-secondary",
           color === "dark" && "text-secondary",
           hoverStyle === "B" &&
             "relative before:absolute before:content-[''] before:left-0 before:bottom-0 before:w-0 before:h-px before:transition-all before:duration-300 hover:before:w-full",

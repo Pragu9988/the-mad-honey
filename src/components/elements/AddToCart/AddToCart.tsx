@@ -1,16 +1,18 @@
+"use client";
 import React from "react";
 import { Button } from "@/components/elements/Buttons/Button";
 import { useCart } from "@/context/cart.context";
 import { Loader2 } from "lucide-react";
 
 type TProps = {
-  productId: string;
+  productId: string | number;
+  type?: "single" | "card";
 };
 
-const AddToCart = ({ productId }: TProps) => {
+const AddToCart = ({ productId, type }: TProps) => {
   const { addToCart, loading, loadingProduct, setLoadingProduct } = useCart();
 
-  const handleAddToCart = (e: any, product_id: string) => {
+  const handleAddToCart = (e: any, product_id: string | number) => {
     e.preventDefault();
     setLoadingProduct(product_id);
     addToCart({ id: product_id });
@@ -18,7 +20,10 @@ const AddToCart = ({ productId }: TProps) => {
 
   return (
     <div>
-      <Button variant={"link"} onClick={(e) => handleAddToCart(e, productId)}>
+      <Button
+        variant={type == "single" ? "primary" : "link"}
+        onClick={(e) => handleAddToCart(e, productId)}
+      >
         {loadingProduct !== productId ? (
           "Add to cart"
         ) : (

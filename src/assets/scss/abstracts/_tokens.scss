@@ -10,7 +10,7 @@ $enable-media-query-dark-mode: false;
 // Contextual
 $color-text-default: $color-neutral-700;
 $color-background-default: #ffffff;
-$color-text-interactive-default: #ffffff;
+$color-text-interactive-default: $color-neutral-800;
 $color-text-interactive-hover: $color-accent-500;
 
 // set to 0 to disable
@@ -99,7 +99,7 @@ $footer-link-text-decoration: none;
 
 // buttons
 $button-font-family: $body-font-family;
-$button-font-size: $font-size-500;
+$button-font-size: $font-size-400;
 $button-font-weight: $font-weight-semi-bold;
 $button-text-transform: uppercase;
 $button-padding: 1em 2.5em;

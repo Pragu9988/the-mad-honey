@@ -6,6 +6,7 @@ import { CartContextProps } from "@/types";
 
 export const CartContext = createContext<CartContextProps>({
   cart: null,
+  setCart: () => {},
   addToCart: async () => "",
   loading: true,
   openCart: false,

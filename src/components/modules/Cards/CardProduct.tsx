@@ -32,7 +32,6 @@ type TProps = VariantProps<typeof cardVariants> & {
 };
 
 const CardProduct = ({ product, className, type, alignment }: TProps) => {
-
   return (
     <div
       className={cn(
@@ -41,7 +40,7 @@ const CardProduct = ({ product, className, type, alignment }: TProps) => {
       )}
     >
       {product.images[0] && (
-        <Anchor path={`/${product.slug}`} target={"_self"}>
+        <Anchor path={`/product/${product.slug}`} target={"_self"}>
           <div
             className={cn(
               "hmh-card__image mb-4",
@@ -68,7 +67,7 @@ const CardProduct = ({ product, className, type, alignment }: TProps) => {
             "tw-text-center md:tw-text-left"
           )}
         >
-          <Anchor path={"/"} target="_self">
+          <Anchor path={`/product/${product.slug}`} target="_self">
             <h3 className={`title`}>{product.name}</h3>
           </Anchor>
           {/* TODO style caption */}

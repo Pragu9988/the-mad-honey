@@ -7,6 +7,7 @@ import {
   clearCartData,
   fetchCartData,
   getCartData,
+  updateCartItem,
 } from "@/services/cart.service";
 import { useToast } from "@/components/ui/use-toast";
 import { sanitize } from "@/utils/sanitize.uitls";
@@ -60,6 +61,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const cartValues: CartContextProps = {
     cart,
+    setCart,
     addToCart: addToCart,
     loading,
     openCart,

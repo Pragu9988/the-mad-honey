@@ -4,6 +4,7 @@ import {
   COO_ADD_ITEM_EP,
   COO_CLEAR_CART_EP,
   COO_GET_CART_EP,
+  COO_CART_ITEM,
 } from "@/config/endpoints.config";
 import { isArray, isEmpty } from "lodash";
 import generateFormData from "@/utils/generateFormData.utils";
@@ -46,6 +47,20 @@ export const clearCartData = async () => {
     return response.data;
   } catch (error) {
     console.error("Clear Cart Error", error);
+    throw error;
+  }
+};
+
+export const updateCartItem = async (data: any) => {
+  const formData = generateFormData(data);
+  try {
+    const response: AxiosResponse = await cooApi.post(
+      COO_CART_ITEM + "/" + data.id,
+      formData
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Update Cart Item", error);
     throw error;
   }
 };

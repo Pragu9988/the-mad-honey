@@ -27,6 +27,15 @@ const createCustomer = async (values: IUser) => {
   }
 };
 
+const updateCustomer = async (values: IUser) => {
+  try {
+    const response = await wooAuth.put(WOO_CUSTOMERS_EP);
+  } catch (error) {
+    console.error("Update customer error:", error);
+    throw error;
+  }
+};
+
 const useCustomers = (
   initialData?: IUser[],
   id?: number
@@ -38,4 +47,4 @@ const useCustomers = (
   });
 };
 
-export { fetchCustomerData, useCustomers };
+export { fetchCustomerData, useCustomers, updateCustomer };

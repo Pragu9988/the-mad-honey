@@ -92,6 +92,7 @@ export interface IProduct {
 export interface AuthContextProps {
   user: IUser | null;
   login: (values: { username: string; password: string }) => Promise<string>;
+  signup: (values: { username: string; password: string }) => Promise<string>;
   logout: () => void;
   isAuthenticated: boolean;
   loading: boolean;
@@ -99,6 +100,7 @@ export interface AuthContextProps {
 
 export interface CartContextProps {
   cart: any;
+  setCart: any;
   addToCart: (values: AddToCartProps) => Promise<string>;
   loading: boolean;
   openCart: boolean;
@@ -120,14 +122,14 @@ export interface IUser {
   role: string;
   username: string;
   password: string;
-  billing: AddressData;
-  shipping: AddressData;
+  billing: IAddressData;
+  shipping: IAddressData;
   is_paying_customer: boolean;
   avatar_url: string;
   meta_data: MetaDataProperty[];
 }
 
-interface AddressData {
+interface IAddressData {
   first_name: string;
   last_name: string;
   company: string;
@@ -255,7 +257,7 @@ export interface ICart {
 }
 
 export interface AddToCartProps {
-  id: string;
+  id: string | number;
   quantity?: number;
   return_item?: boolean;
   variation?: any;

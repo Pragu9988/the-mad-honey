@@ -9,6 +9,7 @@ type TProps = {
 };
 
 const CardCart = ({ product }: TProps) => {
+  console.log("product", product);
   return (
     <div className="flex gap-4">
       <div className="cart-item__thumbnail">
@@ -24,7 +25,11 @@ const CardCart = ({ product }: TProps) => {
           {product.title}
         </p>
         <Price price={product.price} className="mb-1" />
-        <Counter />
+        <Counter
+          max={product.quantity.max_purchase}
+          initialQty={product.quantity.value}
+          productKey={product.item_key}
+        />
       </div>
     </div>
   );

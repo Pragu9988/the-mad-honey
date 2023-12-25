@@ -11,6 +11,7 @@ import {
 import { useAuth } from "@/context/auth.context";
 import { Button } from "@/components/elements/Buttons/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Anchor from "@/components/elements/Anchor";
 
 const DropdownAuth = () => {
   const { user, isAuthenticated, loading, logout } = useAuth();
@@ -31,12 +32,24 @@ const DropdownAuth = () => {
 
   const profileMenu = [
     {
-      label: "My Profile",
-      link: "/my-account#profile",
+      label: "Profile",
+      link: "/myaccount/profile",
     },
     {
-      label: "My Order",
-      link: "/my-account#order",
+      label: "Order",
+      link: "/myaccount/orders",
+    },
+    {
+      label: "Downloads",
+      link: "/myaccount/downloads",
+    },
+    {
+      label: "Addresses",
+      link: "/myaccount/addresses",
+    },
+    {
+      label: "Wishlist",
+      link: "/myaccount/wishlist",
     },
   ];
   return (
@@ -58,11 +71,21 @@ const DropdownAuth = () => {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>My Order</DropdownMenuItem>
-              <DropdownMenuItem>Addresses</DropdownMenuItem>
-              <DropdownMenuItem>My Purchase</DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogout} className=" text-destructive cursor-pointer">Logout</DropdownMenuItem>
+              {profileMenu.map((menu, index) => {
+                return (
+                  <DropdownMenuItem key={menu.label}>
+                    <Anchor target={"self"} path={menu.link}>
+                      {menu.label}
+                    </Anchor>
+                  </DropdownMenuItem>
+                );
+              })}
+              <DropdownMenuItem
+                onClick={handleLogout}
+                className=" text-destructive cursor-pointer"
+              >
+                Logout
+              </DropdownMenuItem>
             </>
           ) : (
             <div className="space-y-4 p-4">

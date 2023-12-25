@@ -21,29 +21,29 @@ const Footer = () => {
             <div className="col-span-1 lg:col-span-2">
               <h5 className="mb-4">Shop</h5>
               <ul className="hmh--footer-menu__list space-y-4">
-                <NavbarItem path="/">Shop</NavbarItem>
-                <NavbarItem path="/">About</NavbarItem>
-                <NavbarItem path="/">Reviews</NavbarItem>
-                <NavbarItem path="/">Blog</NavbarItem>
-                <NavbarItem path="/">Contact</NavbarItem>
+                <NavbarItem color="light" path="/">Shop</NavbarItem>
+                <NavbarItem color="light" path="/">About</NavbarItem>
+                <NavbarItem color="light" path="/">Reviews</NavbarItem>
+                <NavbarItem color="light" path="/">Blog</NavbarItem>
+                <NavbarItem color="light" path="/">Contact</NavbarItem>
               </ul>
             </div>
             <div className="col-span-1 lg:col-span-2">
               <h5 className="mb-4">Explore</h5>
               <ul className="hmh--footer-menu__list space-y-4">
-                <NavbarItem path="/">Shipping and Return Policy</NavbarItem>
-                <NavbarItem path="/">Terms and Conditions</NavbarItem>
-                <NavbarItem path="/">Product Certification</NavbarItem>
-                <NavbarItem path="/">Disclamer</NavbarItem>
+                <NavbarItem color="light" path="/">Shipping and Return Policy</NavbarItem>
+                <NavbarItem color="light" path="/">Terms and Conditions</NavbarItem>
+                <NavbarItem color="light" path="/">Product Certification</NavbarItem>
+                <NavbarItem color="light" path="/">Disclamer</NavbarItem>
               </ul>
             </div>
             <div className="col-span-1 lg:col-span-2">
               <h5 className="mb-4">Contact</h5>
               <ul className="hmh--footer-menu__list space-y-4">
-                <NavbarItem path="/">About</NavbarItem>
-                <NavbarItem path="/">Reviews</NavbarItem>
-                <NavbarItem path="/">Blog</NavbarItem>
-                <NavbarItem path="/">Contact</NavbarItem>
+                <NavbarItem color="light" path="/">About</NavbarItem>
+                <NavbarItem color="light" path="/">Reviews</NavbarItem>
+                <NavbarItem color="light" path="/">Blog</NavbarItem>
+                <NavbarItem color="light" path="/">Contact</NavbarItem>
               </ul>
             </div>
           </div>
