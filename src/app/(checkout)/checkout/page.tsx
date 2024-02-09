@@ -1,4 +1,4 @@
-import SignupFrom from "@/components/sections/SignupFrom";
+import CheckoutForm from "@/components/sections/CheckoutFrom/CheckoutForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function CheckoutPage() {
-  return <SignupFrom />;
+  return <CheckoutForm />;
 }

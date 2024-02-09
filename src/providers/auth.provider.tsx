@@ -37,10 +37,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const login = async (data: { username: string; password: string }) => {
     try {
-      const token = await authenticateUser(data.username, data.password);
+      const { token, id } = await authenticateUser(
+        data.username,
+        data.password
+      );
       // Fetch user data if needed
-      if (!isNull(userId)) {
-        const userData = await fetchCustomerData(userId);
+      if (!isNull(id)) {
+        const userData = await fetchCustomerData(id);
         setUser(userData);
       }
       return token;
@@ -73,11 +76,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const authValues: AuthContextProps = {
     user,
+    setUser,
     login,
     signup: signupUser,
     logout: logoutUser,
     isAuthenticated: !!user,
     loading,
+    setLoading
   };
 
   return (

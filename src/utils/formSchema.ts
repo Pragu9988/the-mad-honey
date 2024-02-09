@@ -5,6 +5,19 @@ const passwordRegex = new RegExp(
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>])[A-Za-z\d!@#$%^&*()\-_=+{};:,<.>.]{8,}$/
 );
 
+export const customerFormSchema = z.object({
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required.",
+    })
+    .email({
+      message: "Email is not valid",
+    }),
+});
+
 export const registerFormSchema = z
   .object({
     first_name: z.string().refine((value) => !!value, {
@@ -73,3 +86,82 @@ export const changePasswordFormSchema = z
     message: "Password and Confirm password didn't match",
     path: ["confirm_password"],
   });
+
+export const contactFormSchema = z.object({
+  name: z.string().refine((value) => !!value, { message: "Name is required." }),
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required.",
+    })
+    .email({
+      message: "Email is not valid",
+    }),
+  message: z.string().optional(),
+});
+
+const addressSchema = z.object({
+  first_name: z.string(),
+  last_name: z.string(),
+  address_1: z.string(),
+  address_2: z.string().optional(),
+  city: z.string(),
+  state: z.string(),
+  postcode: z.string(),
+  country: z.string(),
+  email: z.string(),
+  phone: z.string(),
+});
+
+const lineItemSchema = z.object({
+  product_id: z.number(),
+  variation_id: z.number().optional(),
+  quantity: z.number(),
+});
+
+const shippingLineSchema = z.object({
+  method_id: z.string(),
+  method_title: z.string(),
+  total: z.string(),
+});
+
+export const couponSchema = z.object({
+  code: z.string(),
+});
+
+export const orderSchema = z.object({
+  payment_method: z.string(),
+  payment_method_title: z.string(),
+  set_paid: z.boolean(),
+  billing: addressSchema,
+  line_items: z.array(lineItemSchema),
+  shipping_lines: z.array(shippingLineSchema),
+  order_note: z.string().optional(),
+  includeCouponLines: z.boolean(),
+  coupon_lines: z
+    .object({
+      code: z.string(),
+      amount: z.string(),
+    })
+    .refine((data) => data && data.code && data.amount, {
+      path: ["coupon_lines"],
+      message: "Coupon lines are required when includeCouponLines is checked",
+    })
+    .optional(),
+});
+
+export const orderInformationSchema = z.object({
+  step: z.literal(1),
+  shipping: addressSchema,
+});
+
+export const orderDispatchSchema = z.object({
+  step: z.literal(2),
+  shipping_lines: z.array(shippingLineSchema),
+});
+
+export const orderPaymentSchema = z.object({
+  step: z.literal(3),
+  payment_method: z.string(),
+  payment_method_title: z.string(),
+});

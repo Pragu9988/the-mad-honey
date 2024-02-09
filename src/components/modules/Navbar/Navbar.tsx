@@ -4,12 +4,27 @@ import React from "react";
 import menus from "@/data/menus";
 import NavbarItem from "./NavbarItem";
 import NavbarIcons from "./NavbarIcons";
+import { cn } from "@/utils/cn.utils";
 
-const Navbar = () => {
+type TProps = {
+  isOffcanvas?: boolean;
+};
+
+const Navbar = ({ isOffcanvas }: TProps) => {
   return (
-    <div className=" flex gap-8 items-center justify-between">
-      <nav className="hmh-navbar nav-main-menu text-sm font-semibold tracking-wide">
-        <ul className="navbar__menu-list flex items-center gap-6">
+    <div className=" flex gap-8 items-center justify-between flex-col md:flex-row">
+      <nav
+        className={cn(
+          "hmh-navbar nav-main-menu text-sm font-semibold tracking-wide",
+          isOffcanvas ? "hmh-navbar--mobile" : null
+        )}
+      >
+        <ul
+          className={cn(
+            "navbar__menu-list flex md:items-center gap-4 md:gap-6",
+            isOffcanvas ? "flex-col" : null
+          )}
+        >
           {menus.map((menu: any) => {
             return (
               <NavbarItem
@@ -24,7 +39,7 @@ const Navbar = () => {
           })}
         </ul>
       </nav>
-      <NavbarIcons />
+      {!isOffcanvas && <NavbarIcons />}
     </div>
   );
 };

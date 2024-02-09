@@ -13,6 +13,7 @@ import emptyCart from "@/assets/images/empty-cart.png";
 import { Button } from "@/components/elements/Buttons/Button";
 import { ICartItem } from "@/types";
 import CardCart from "../Cards/CardCart";
+import Anchor from "@/components/elements/Anchor";
 
 type TProps = {
   children: ReactNode;
@@ -20,7 +21,6 @@ type TProps = {
 
 const OffCanvasCart = ({ children }: TProps) => {
   const { openCart, setOpenCart, cart, clearCart } = useCart();
-  console.log("abc", cart?.totals);
   return (
     <div className="cart-offcanvas">
       <Sheet open={openCart} onOpenChange={setOpenCart}>
@@ -52,16 +52,22 @@ const OffCanvasCart = ({ children }: TProps) => {
                       <div className="cart-total py-4 space-y-3 border-t border-gray-200">
                         <div className="flex items-baseline justify-between text-gray-800">
                           <h4 className="text-sm font-medium">Subtotal</h4>
-                          <div className="text-sm font-semibold">{cart?.totals?.subtotal}</div>
+                          <div className="text-sm font-semibold">
+                            {cart?.totals?.subtotal / 100}
+                          </div>
                         </div>
                         <div className="flex items-baseline justify-between text-gray-800">
                           <h4 className="text-lg font-medium">Total</h4>
-                          <div className="text-lg font-semibold">{cart?.totals?.total}</div>
+                          <div className="text-lg font-semibold">
+                            {cart?.totals?.total / 100}
+                          </div>
                         </div>
                         <hr />
-                        <Button variant={"accent"} className="w-full">
-                          Checkout
-                        </Button>
+                        <Anchor target={"self"} path={"/checkout"}>
+                          <Button variant={"accent"} className="w-full">
+                            Proceed to Checkout
+                          </Button>
+                        </Anchor>
                       </div>
                     </div>
                   </div>

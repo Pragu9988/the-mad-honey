@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import {
   Form,
@@ -15,32 +15,68 @@ import { Button } from "@/components/elements/Buttons/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
+import { updateCustomer } from "@/services/customer.service";
+import { useAuth } from "@/context/auth.context";
+import { IAddressData } from "@/types";
 
-const EditAddressForm = () => {
+type TProps = {
+  title: string;
+  setOpen: any;
+};
+
+const EditAddressForm = ({ title, setOpen }: TProps) => {
+  const { user, setUser, loading, setLoading } = useAuth();
   const { toast } = useToast();
+  const [isBilling, setIsBilling] = useState(true);
+
+  useEffect(() => {
+    if (title != "Billing Address") {
+      setIsBilling(false);
+    }
+  }, [title]);
 
   const form = useForm({
-    defaultValues: {
-      first_name: "",
-      last_name: "",
-      company: "",
-      address_1: "",
-      address_2: "",
-      city: "",
-      postcode: "",
-      country: "",
-      state: "",
-      email: "",
-      phone: "",
-    },
+    defaultValues: title != "Billing Address" ? user?.shipping : user?.billing,
   });
 
   function onSubmit(values: any) {
-    console.log(values);
-    toast({
-      description: "User account created successfully.",
-    });
+    console.log("values", values);
+    if (isBilling) {
+      const data = {
+        billing: {
+          ...values,
+        },
+      };
+      updateAddress(data);
+    } else {
+      const data = {
+        shipping: {
+          ...values,
+        },
+      };
+      updateAddress(data);
+    }
   }
+
+  const updateAddress = async (data: any) => {
+    setLoading(true);
+    try {
+      const res = await updateCustomer(data);
+      console.log("res", res);
+      if (res.status == 200) {
+        setUser(res.data);
+        setOpen(false);
+        toast({
+          description: "Address created successfully.",
+        });
+      }
+    } catch (error) {
+      console.error("Update customer error:", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

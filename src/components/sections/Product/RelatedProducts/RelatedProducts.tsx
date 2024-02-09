@@ -11,7 +11,7 @@ const RelatedProducts = () => {
         <SectionHeader title={"Related Products"} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
           {products.map((product, index) => {
-            return <CardProduct title={product.title} imgSrc={DefaultImg} />;
+            return <CardProduct product={product} key={index} />;
           })}
         </div>
       </div>

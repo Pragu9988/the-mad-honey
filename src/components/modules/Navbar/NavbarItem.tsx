@@ -44,7 +44,7 @@ const NavbarItem = ({
         onKeyPress={onKeyPress}
         onFocus={onFocus}
         onBlur={onBlur}
-        target={target}
+        target={"_self"}
         role="menuitem"
         tabIndex={0}
         {...rest}

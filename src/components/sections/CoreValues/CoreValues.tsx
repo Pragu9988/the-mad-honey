@@ -5,12 +5,13 @@ import values from "@/data/values";
 import { scrollUpVariants } from "@/utils/framer.utils";
 import CardFeature from "@/components/modules/Cards/CardFeature";
 import { motion } from "framer-motion";
+import { cn } from "@/utils/cn.utils";
 
 const CoreValues = () => {
   return (
-    <section className="infograph-block bg-primary-100 ims-padding-block py-8 md:py-10 lg:py-20">
+    <section className="infograph-block py-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 md:gap-x-10">
           {values?.map((item: any, itemIndex: number) => {
             return (
               <motion.div
@@ -26,6 +27,7 @@ const CoreValues = () => {
                   topic={item?.title}
                   figure={item?.figure}
                   info={item?.description}
+                  className={cn(itemIndex > 2 ? "-mt-[1px]" : "mt-0")}
                 />
               </motion.div>
             );

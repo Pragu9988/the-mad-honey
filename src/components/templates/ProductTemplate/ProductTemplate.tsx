@@ -10,7 +10,6 @@ type TProps = {
 };
 
 const ProductTemplate = ({ product }: TProps) => {
-  console.log("prod", product);
 
   return (
     <>

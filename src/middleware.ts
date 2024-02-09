@@ -7,4 +7,7 @@ export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/login") && authToken?.value) {
     return NextResponse.redirect(new URL("/", request.url));
   }
+  if (request.nextUrl.pathname.startsWith("/myaccount/") && !authToken?.value) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 }

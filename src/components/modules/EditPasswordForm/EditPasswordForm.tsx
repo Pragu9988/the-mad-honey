@@ -36,7 +36,6 @@ const EditPasswordForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof changePasswordFormSchema>) {
-    console.log(values);
     if (isAuthenticated) {
       toast({
         description: "User account created successfully.",

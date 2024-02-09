@@ -6,11 +6,13 @@ import { AuthContextProps } from "@/types";
 
 export const AuthContext = createContext<AuthContextProps>({
   user: null,
+  setUser: () => "",
   login: async () => "",
   logout: () => {},
   signup: async () => "",
   isAuthenticated: false,
   loading: true,
+  setLoading: () => "",
 });
 
 export const useAuth = () => {

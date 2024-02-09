@@ -5,6 +5,10 @@ import CoreValues from "@/components/sections/CoreValues";
 import TwoColumn from "@/components/sections/TwoColumn";
 
 import introBannerImg from "@/assets/images/intro-image.jpg";
+import Testimonials from "@/components/sections/Testimonials/Testimonials";
+import BlogGrid from "@/components/sections/BlogGrid/BlogGrid";
+import BuyInBulk from "@/components/sections/BuyInBulk";
+import honeyBottles from "@/assets/images/honey-bottles.png";
 
 const HomeTemplate = () => {
   return (
@@ -20,6 +24,9 @@ const HomeTemplate = () => {
       />
       <CoreValues />
       <FeaturedProductGrid />
+      <Testimonials />
+      <BuyInBulk imgSrc={honeyBottles} />
+      <BlogGrid />
       <TwoColumn
         title="Join the Mad Honey Experience"
         imgSrc={introBannerImg}

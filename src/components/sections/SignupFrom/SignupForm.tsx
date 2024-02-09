@@ -43,7 +43,6 @@ const SignupForm = ({ fullWidth }: TProps) => {
   });
 
   function onSubmit(values: z.infer<typeof registerFormSchema>) {
-    console.log(values);
     signup(values);
     if (isAuthenticated) {
       toast({

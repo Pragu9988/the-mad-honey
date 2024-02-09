@@ -15,7 +15,7 @@ const fetchProducts = cache(
 );
 
 const useProducts = (
-  initialData?: IProduct[],
+  initialData?: IProduct[] | null,
   params: Record<string, any> = {}
 ): UseQueryResult<IProduct[], Error> => {
   return useQuery({

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SignupForm from "@/components/sections/SignupFrom/SignupForm";
+import CustomerUpdateForm from "@/components/sections/CustomerUpdateForm";
 
 const CardEditProfile = () => {
   return (
@@ -19,7 +20,7 @@ const CardEditProfile = () => {
         <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
       <CardContent>
-        <SignupForm fullWidth />
+        <CustomerUpdateForm fullWidth />
       </CardContent>
     </Card>
   );

@@ -48,7 +48,7 @@ const ShopProducts = ({ data }: TProps) => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8">
           {products?.map((product: any, index: number) => {
-            return <CardProduct product={product} />;
+            return <CardProduct product={product} key={index} />;
           })}
         </div>
       </div>

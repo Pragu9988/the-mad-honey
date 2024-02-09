@@ -3,6 +3,8 @@ import wooAuth from "./wooAuth.service";
 import { WOO_CUSTOMERS_EP } from "@/config/endpoints.config";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { authenticateUser } from "./auth.service";
+import generateFormData from "@/utils/generateFormData.utils";
+import Cookies from "js-cookie";
 
 const fetchCustomerData = async (id?: number) => {
   try {
@@ -29,7 +31,9 @@ const createCustomer = async (values: IUser) => {
 
 const updateCustomer = async (values: IUser) => {
   try {
-    const response = await wooAuth.put(WOO_CUSTOMERS_EP);
+    const userId = Number(Cookies.get("userId"));
+    const response = await wooAuth.put(WOO_CUSTOMERS_EP + "/" + userId, values);
+    return response;
   } catch (error) {
     console.error("Update customer error:", error);
     throw error;

@@ -3,9 +3,9 @@ import { cn } from "@/utils";
 
 type TProps = {
   className?: string;
-  price?: string;
-  regularPrice?: string;
-  salePrice?: string;
+  price?: any;
+  regularPrice?: any;
+  salePrice?: any;
 };
 
 const Price = ({ className, price, regularPrice, salePrice }: TProps) => {
@@ -14,14 +14,14 @@ const Price = ({ className, price, regularPrice, salePrice }: TProps) => {
       {!regularPrice && !salePrice ? (
         <dd>
           <span className="price--sale font-semibold" data-sale-price="">
-            {price}
+            {price / 100}
           </span>
         </dd>
       ) : (
         <>
           <dd>
             <span className="price--sale font-semibold" data-sale-price="">
-              {salePrice}
+              {salePrice / 100}
             </span>
           </dd>
           <del>
@@ -29,7 +29,7 @@ const Price = ({ className, price, regularPrice, salePrice }: TProps) => {
               className="price price--regular text-gray-400 font-medium"
               data-regular-price=""
             >
-              {regularPrice}
+              {regularPrice / 100}
             </span>
           </del>
         </>

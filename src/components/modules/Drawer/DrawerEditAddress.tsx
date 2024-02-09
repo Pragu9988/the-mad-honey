@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -15,20 +15,21 @@ type TProps = {
   children: ReactNode;
   open: boolean;
   setOpen: any;
+  title: string;
 };
 
-const DrawerEditAddress = ({ children, open, setOpen }: TProps) => {
+const DrawerEditAddress = ({ children, open, setOpen, title }: TProps) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="sm:max-w-3xl overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Edit billing address</SheetTitle>
+          <SheetTitle>Edit {title}</SheetTitle>
           <SheetDescription>
             Make changes to your profile here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <EditAddressForm />
+        <EditAddressForm title={title} setOpen={setOpen} />
       </SheetContent>
     </Sheet>
   );

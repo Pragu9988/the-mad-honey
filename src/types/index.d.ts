@@ -91,11 +91,13 @@ export interface IProduct {
 // Ref: CONTEXT INTERFACES
 export interface AuthContextProps {
   user: IUser | null;
-  login: (values: { username: string; password: string }) => Promise<string>;
-  signup: (values: { username: string; password: string }) => Promise<string>;
+  setUser: any;
+  login: (values: { username: string; password: string }) => Promise<any>;
+  signup: (values: any) => Promise<any>;
   logout: () => void;
   isAuthenticated: boolean;
   loading: boolean;
+  setLoading: any;
 }
 
 export interface CartContextProps {
@@ -122,11 +124,11 @@ export interface IUser {
   role: string;
   username: string;
   password: string;
-  billing: IAddressData;
-  shipping: IAddressData;
+  billing?: IAddressData;
+  shipping?: IAddressData;
   is_paying_customer: boolean;
   avatar_url: string;
-  meta_data: MetaDataProperty[];
+  meta_data?: MetaDataProperty[];
 }
 
 interface IAddressData {

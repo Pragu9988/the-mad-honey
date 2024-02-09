@@ -12,6 +12,7 @@ type TProps = {
 };
 
 const ProductSingle = ({ product }: TProps) => {
+  console.log("pp", product);
   return (
     <section className="product-single pb-4 md:pb-8 lg:pb-10">
       <div className="container mx-auto">
@@ -37,7 +38,7 @@ const ProductSingle = ({ product }: TProps) => {
                 salePrice={product.sale_price}
               />
               <div className="block">
-                <Counter max={product.sku} />
+                <Counter max={product.sku} initialQty={1} />
               </div>
               <AddToCart productId={product.id} type="single" />
             </div>

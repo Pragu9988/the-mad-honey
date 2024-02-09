@@ -9,6 +9,5 @@ export default async function Product({
   params: { productSlug: string };
 }) {
   const product: IProduct[] = await fetchProducts({ slug: params.productSlug });
-  console.log("prod", product);
   return <ProductTemplate product={product[0]} />;
 }

@@ -23,7 +23,7 @@ export const authenticateUser = async (username: string, password: string) => {
     const { token, id } = response.data.data;
     Cookies.set("authToken", token);
     Cookies.set("userId", id);
-    return token;
+    return { token, id };
   } catch (error) {
     console.error("Authentication error:", error);
     throw error;

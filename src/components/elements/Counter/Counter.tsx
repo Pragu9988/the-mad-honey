@@ -21,7 +21,6 @@ const Counter = ({ max, initialQty, productKey }: TProps) => {
 
   const updateCart = async (data: any) => {
     const cartData = await updateCartItem(data);
-    console.log("cart", cartData);
     setCart(cartData);
   };
 

@@ -1,10 +1,11 @@
 import React from "react";
 import DropdownAuth from "../Dropdowns/DropdownAuth";
-import { Heart, SearchIcon, ShoppingBag } from "lucide-react";
+import { Heart, SearchIcon, ShoppingBag, Menu } from "lucide-react";
 import OffCanvasCart from "../OffCanvas/OffCanvasCart";
 import OffCanvasSearch from "../OffCanvas/OffCanvasSearch";
 import ModalFavorites from "../Modals/ModalFavorites";
 import { useCart } from "@/context/cart.context";
+import OffCanvasMobileMenu from "../OffCanvas/OffCanvasMobileMenu";
 
 const NavbarIcons = () => {
   const { cart } = useCart();
@@ -35,6 +36,11 @@ const NavbarIcons = () => {
         </li>
         <li className="hmh-header-icons__item">
           <DropdownAuth />
+        </li>
+        <li className="hmh-header-icons__item block md:hidden">
+          <OffCanvasMobileMenu>
+            <Menu size={20} strokeWidth={1.5} />
+          </OffCanvasMobileMenu>
         </li>
       </ul>
     </div>
