@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/elements/Buttons/Button";
 import Anchor from "@/components/elements/Anchor";
 import Image from "next/image";
+import ModalBuyInBulk from "@/components/modules/Modals/ModalBuyInBulk";
 type TProps = {
   imgSrc: any;
 };
@@ -18,9 +19,11 @@ const BuyInBulk = ({ imgSrc }: TProps) => {
             <p className="text-gray-700 text-xl">
               Unlock Sweet Success with Our Exclusive Honey at Wholesale Rates!
             </p>
-            <Button className="tw-mt-6 btn btn-primary" variant={"accent"}>
-              Seize the Honey!
-            </Button>
+            <ModalBuyInBulk>
+              <Button className="tw-mt-6 btn btn-primary" variant={"accent"}>
+                Seize the Honey!
+              </Button>
+            </ModalBuyInBulk>
           </div>
           <div className="image col-span-1 md:col-span-3">
             <Image

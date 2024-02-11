@@ -6,22 +6,31 @@ type TProps = {
   price?: any;
   regularPrice?: any;
   salePrice?: any;
+  inCent?: boolean;
 };
 
-const Price = ({ className, price, regularPrice, salePrice }: TProps) => {
+const Price = ({
+  className,
+  price,
+  regularPrice,
+  salePrice,
+  inCent = true,
+}: TProps) => {
+  const formatPrice = (value: any) => `$ ${inCent ? value / 100 : value}`;
+
   return (
     <div className={cn(className, "price flex items-center gap-4 flex-wrap")}>
       {!regularPrice && !salePrice ? (
         <dd>
           <span className="price--sale font-semibold" data-sale-price="">
-            {price / 100}
+            {formatPrice(price)}
           </span>
         </dd>
       ) : (
         <>
           <dd>
             <span className="price--sale font-semibold" data-sale-price="">
-              {salePrice / 100}
+              {formatPrice(salePrice)}
             </span>
           </dd>
           <del>
@@ -29,7 +38,7 @@ const Price = ({ className, price, regularPrice, salePrice }: TProps) => {
               className="price price--regular text-gray-400 font-medium"
               data-regular-price=""
             >
-              {regularPrice / 100}
+              {formatPrice(regularPrice)}
             </span>
           </del>
         </>

@@ -6,6 +6,7 @@ import React from "react";
 import productss from "@/data/products";
 import DefaultImg from "@/assets/images/img-default-banner.png";
 import { useProducts, fetchProducts } from "@/services/products.service";
+import SkeletonProductCard from "@/components/modules/Skeleton/SkeletonProductCard";
 
 const FeaturedProductGrid = () => {
   const params: Record<string, any> = {
@@ -25,7 +26,7 @@ const FeaturedProductGrid = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
           {(productsLoading || productsError) &&
             Array.from({ length: 4 }, (_, index) => (
-              <div key={index}>Loading</div>
+              <SkeletonProductCard key={index} />
             ))}
           {products &&
             products.map((product: any, index: number) => {

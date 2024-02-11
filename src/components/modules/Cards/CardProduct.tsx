@@ -64,32 +64,18 @@ const CardProduct = ({ product, className, type, alignment }: TProps) => {
         <div
           className={cn(
             "hmh-card__content space-y-2",
-            "tw-text-center md:tw-text-left"
+            "text-left md:text-left"
           )}
         >
           <Anchor path={`/product/${product.slug}`} target="_self">
             <h3 className={`title`}>{product.name}</h3>
           </Anchor>
-          {/* TODO style caption */}
-          {/* {caption ? (
-            <div
-              className="caption"
-              dangerouslySetInnerHTML={{
-                __html: sanitize(caption),
-              }}
-            />
-          ) : (
-            <></>
-          )} */}
-          {/* <div
-            className="excerpt"
-            dangerouslySetInnerHTML={{ __html: sanitize(excerpt) }}
-          /> */}
           <div className="price-container">
             <Price
               price={product.price}
               regularPrice={product?.regular_price}
               salePrice={product?.sale_price}
+              inCent={false}
             />
           </div>
           <div className="cta">

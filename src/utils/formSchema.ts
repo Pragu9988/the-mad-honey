@@ -165,3 +165,23 @@ export const orderPaymentSchema = z.object({
   payment_method: z.string(),
   payment_method_title: z.string(),
 });
+
+export const buyInBulkSchema = z.object({
+  full_name: z
+    .string()
+    .refine((value) => !!value, { message: "Name is required." }),
+  company_name: z.string().optional(),
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required.",
+    })
+    .email({
+      message: "Email is not valid",
+    }),
+  phone: z.string(),
+  product_of_interest: z.string().optional(),
+  estimated_qty: z.string().optional(),
+  shipping_destination: z.string().optional(),
+  notes: z.string().optional(),
+});

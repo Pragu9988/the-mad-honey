@@ -110,6 +110,7 @@ export interface CartContextProps {
   loadingProduct: any;
   setLoadingProduct: any;
   clearCart: () => Promise<string>;
+  error?: string | null;
 }
 
 export interface IUser {

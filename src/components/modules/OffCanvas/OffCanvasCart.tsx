@@ -17,10 +17,13 @@ import Anchor from "@/components/elements/Anchor";
 
 type TProps = {
   children: ReactNode;
+  inCent?: Boolean;
 };
 
-const OffCanvasCart = ({ children }: TProps) => {
+const OffCanvasCart = ({ children, inCent = true }: TProps) => {
   const { openCart, setOpenCart, cart, clearCart } = useCart();
+  const formatPrice = (value: any) => `$ ${inCent ? value / 100 : value}`;
+
   return (
     <div className="cart-offcanvas">
       <Sheet open={openCart} onOpenChange={setOpenCart}>
@@ -53,13 +56,13 @@ const OffCanvasCart = ({ children }: TProps) => {
                         <div className="flex items-baseline justify-between text-gray-800">
                           <h4 className="text-sm font-medium">Subtotal</h4>
                           <div className="text-sm font-semibold">
-                            {cart?.totals?.subtotal / 100}
+                            {formatPrice(cart?.totals?.subtotal)}
                           </div>
                         </div>
                         <div className="flex items-baseline justify-between text-gray-800">
                           <h4 className="text-lg font-medium">Total</h4>
                           <div className="text-lg font-semibold">
-                            {cart?.totals?.total / 100}
+                            {formatPrice(cart?.totals?.total)}
                           </div>
                         </div>
                         <hr />

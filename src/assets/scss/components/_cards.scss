@@ -67,11 +67,6 @@
         background-color: var(--neutral-100);
         margin-bottom: 0.5rem;
       }
-      &__content {
-        .title {
-          text-align: center;
-        }
-      }
     }
   }
 
@@ -88,11 +83,11 @@
       &__content {
         .title {
           text-align: left;
-          font-weight: 600
+          font-weight: 600;
         }
 
         .excerpt {
-          color: var(--neutral-500)
+          color: var(--neutral-500);
         }
       }
     }

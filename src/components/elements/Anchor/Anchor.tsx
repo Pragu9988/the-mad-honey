@@ -9,7 +9,7 @@ const defaultProps = {
 
 type TProps = typeof defaultProps &
   React.HTMLAttributes<HTMLAnchorElement> & {
-    path: string;
+    path?: string;
     href?: string;
     as?: string;
     children: ReactNode;

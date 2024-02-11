@@ -14,6 +14,7 @@ export const CartContext = createContext<CartContextProps>({
   loadingProduct: null,
   setLoadingProduct: () => {},
   clearCart: async () => "",
+  error: null,
 });
 
 export const useCart = () => {

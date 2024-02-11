@@ -10,11 +10,16 @@ type TProps = {
 };
 
 const ProductTemplate = ({ product }: TProps) => {
-
   return (
     <>
       <div className="container mx-auto">
-        <Breadcrumb />
+        <Breadcrumb
+          items={[
+            { label: "Home", url: "/" },
+            { label: "Products", url: "/shop" },
+            { label: product.name },
+          ]}
+        />
       </div>
       <ProductSingle product={product} />
       <ProductTabs product={product} />

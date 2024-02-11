@@ -56,11 +56,11 @@
     &[data-type="link"],
     &--link {
       background-color: transparent;
-      color: var(--neutral-800);
+      color: var(--accent-500);
       padding: 0;
 
       &:is(:hover, :focus) {
-        color: var(--accent-500);
+        color: var(--accent-600);
       }
     }
 

@@ -19,15 +19,15 @@ export default [
     label: "Reviews",
     path: "/reviews",
   },
-  {
-    id: 5,
-    label: "Dosage",
-    path: "/dosage",
-  },
+  // {
+  //   id: 5,
+  //   label: "Dosage",
+  //   path: "/dosage",
+  // },
   {
     id: 6,
     label: "FAQ",
-    path: "/faq",
+    path: "/faqs",
   },
   {
     id: 7,

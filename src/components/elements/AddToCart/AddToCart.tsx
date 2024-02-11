@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/elements/Buttons/Button";
 import { useCart } from "@/context/cart.context";
-import { Loader2 } from "lucide-react";
+import { Loader2, ShoppingCart } from "lucide-react";
 
 type TProps = {
   productId: string | number;
@@ -23,11 +23,18 @@ const AddToCart = ({ productId, type }: TProps) => {
       <Button
         variant={type == "single" ? "primary" : "link"}
         onClick={(e) => handleAddToCart(e, productId)}
+        className="gap-2"
       >
         {loadingProduct !== productId ? (
-          "Add to cart"
+          <>
+            <ShoppingCart size={16} />
+            <span>Add to cart</span>
+          </>
         ) : (
-          <Loader2 size={20} className="animate-spin text-center" />
+          <>
+            <Loader2 size={20} className="animate-spin text-center" />
+            <span>Adding</span>
+          </>
         )}
       </Button>
     </div>

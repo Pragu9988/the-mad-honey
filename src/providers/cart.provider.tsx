@@ -15,6 +15,7 @@ import { sanitize } from "@/utils/sanitize.uitls";
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<ICart | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>();
   const [loadingProduct, setLoadingProduct] = useState<string | null>(null);
   const [openCart, setOpenCart] = useState(false);
   const { toast } = useToast();
@@ -33,6 +34,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const cartData = await fetchCartData(data);
+      console.log(cartData);
       // setOpenCart(true);
       setLoading(false);
       {
@@ -46,6 +48,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       }
       return cartData;
     } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+      console.error("Add to Cart Error:", error);
       throw error;
     } finally {
       setLoading(false);
@@ -69,6 +77,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     loadingProduct,
     setLoadingProduct,
     clearCart,
+    error,
   };
 
   return (

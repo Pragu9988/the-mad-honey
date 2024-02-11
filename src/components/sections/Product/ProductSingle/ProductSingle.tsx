@@ -12,15 +12,14 @@ type TProps = {
 };
 
 const ProductSingle = ({ product }: TProps) => {
-  console.log("pp", product);
   return (
     <section className="product-single pb-4 md:pb-8 lg:pb-10">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
           <div className="product-media">
-            <ProductMedia />
+            <ProductMedia images={product.images} />
           </div>
-          <div className="product-summary space-y-4 md:space-y-8 py-8">
+          <div className="product-summary space-y-4 md:space-y-8 py-0 lg:py-8">
             <h2 className="product-summary__title font-medium">
               {product.name}
             </h2>
@@ -36,6 +35,7 @@ const ProductSingle = ({ product }: TProps) => {
                 price={product.price}
                 regularPrice={product.regular_price}
                 salePrice={product.sale_price}
+                inCent={false}
               />
               <div className="block">
                 <Counter max={product.sku} initialQty={1} />

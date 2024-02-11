@@ -5,6 +5,8 @@ import CartProvider from "@/providers/cart.provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Montserrat, Karla } from "next/font/google";
 import "@/assets/scss/main.scss";
+import Header from "@/components/modules/Header/Header";
+import Footer from "@/components/modules/Footer/Footer";
 
 const primary = Montserrat({
   subsets: ["latin"],

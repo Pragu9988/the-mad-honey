@@ -31,7 +31,9 @@ const ShopProducts = ({ data }: TProps) => {
       <div className="container mx-auto space-y-6">
         <div className="flex justify-between">
           <div className="breadcrumb__container">
-            <Breadcrumb />
+            <Breadcrumb
+              items={[{ label: "Home", url: "/" }, { label: "Products" }]}
+            />
           </div>
           <div className="filter__select">
             <Select>
