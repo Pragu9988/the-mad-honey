@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["the-mad-honey.local"],
+    domains: ["the-mad-honey.local", "admin.himalayanmadhoney.net"],
   },
 };
 
