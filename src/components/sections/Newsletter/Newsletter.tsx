@@ -47,7 +47,8 @@ const Newsletter: React.FC<NewsletterInterface> = ({ data }) => {
     const response = await newsletterSubscribe(values.email);
     if (response) {
       toast({
-        description: "Form Submission complete. We will get back to you soon.",
+        description:
+          "Subscription Successful! Thank you for subscribing to our newsletter.",
       });
     }
   }
