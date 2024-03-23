@@ -22,21 +22,25 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const initialCartData = async () => {
-      const cartData = await getCartData();
-      setCart(cartData);
-      setLoading(false);
-      setLoadingProduct(null);
+      try {
+        setLoading(true);
+        const cartData = await getCartData();
+        setCart(cartData);
+      } catch (error) {
+        console.error("Get cart data error:", error);
+      } finally {
+        setLoading(false);
+        setLoadingProduct(null);
+      }
     };
     initialCartData();
   }, []);
 
   const addToCart = async (data: AddToCartProps) => {
-    setLoading(true);
     try {
+      setLoading(true);
       const cartData = await fetchCartData(data);
-      console.log(cartData);
       // setOpenCart(true);
-      setLoading(false);
       {
         !loading && setOpenCart(true);
       }

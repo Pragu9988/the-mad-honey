@@ -32,7 +32,6 @@ const BuyInBulkForm = ({ setOpenModal }: TProps) => {
   });
 
   function onSubmit(values: z.infer<typeof buyInBulkSchema>) {
-    console.log(values);
     setHasSubmitted(true);
   }
   return (

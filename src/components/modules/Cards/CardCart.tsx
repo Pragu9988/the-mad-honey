@@ -12,7 +12,7 @@ type TProps = {
 const CardCart = ({ product, isCheckout }: TProps) => {
   return (
     <div className="flex gap-4">
-      <div className="cart-item__thumbnail">
+      <div className="cart-item__thumbnail relative">
         <Image
           src={product.featured_image}
           alt={product.title}

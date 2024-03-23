@@ -21,7 +21,6 @@ const generateFormData = (object: Record<string, any>): FormData => {
                 });
               }
             } else {
-              // console.log('else condition')
               formData.append(`${key}[${index}]`, item);
             }
           });

@@ -76,7 +76,6 @@ export const updateCartItem = async (data: any) => {
 //       setProcessing(false);
 //     })
 //     .catch((err) => {
-//       console.log("err", err);
 //       setProcessing(false);
 //     });
 // };

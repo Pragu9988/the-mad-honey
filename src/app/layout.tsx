@@ -7,6 +7,7 @@ import { Montserrat, Karla } from "next/font/google";
 import "@/assets/scss/main.scss";
 import Header from "@/components/modules/Header/Header";
 import Footer from "@/components/modules/Footer/Footer";
+import GoogleAnalytics from "./googleAnalytics";
 
 const primary = Montserrat({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${primary.variable} ${accent.variable}`}>
+        {/* <GoogleAnalytics /> */}
         <TanstackProvider>
           <AuthProvider>
             <CartProvider>{children}</CartProvider>

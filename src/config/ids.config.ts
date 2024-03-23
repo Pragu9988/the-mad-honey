@@ -1,0 +1,15 @@
+export const {
+  HOME_ID,
+  ABOUT_ID,
+  SHOP_ID,
+  CHECKOUT_ID,
+  CART_ID,
+  MY_ACCOUNT_ID,
+} = {
+  HOME_ID: 129,
+  ABOUT_ID: 134,
+  SHOP_ID: 6,
+  CHECKOUT_ID: 8,
+  CART_ID: 7,
+  MY_ACCOUNT_ID: 9,
+};

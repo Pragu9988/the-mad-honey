@@ -24,14 +24,14 @@ const FeaturedProductGrid = () => {
       <div className="container mx-auto space-y-10">
         <SectionHeader title={"Our Collection"} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8">
-          {(productsLoading || productsError) &&
-            Array.from({ length: 4 }, (_, index) => (
-              <SkeletonProductCard key={index} />
-            ))}
-          {products &&
-            products.map((product: any, index: number) => {
-              return <CardProduct product={product} key={product.id} />;
-            })}
+          {productsLoading || productsError
+            ? Array.from({ length: 4 }, (_, index) => (
+                <SkeletonProductCard key={index} />
+              ))
+            : products &&
+              products.map((product: any, index: number) => {
+                return <CardProduct product={product} key={product.id} />;
+              })}
         </div>
       </div>
     </section>

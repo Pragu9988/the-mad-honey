@@ -100,7 +100,7 @@ export const contactFormSchema = z.object({
   message: z.string().optional(),
 });
 
-const addressSchema = z.object({
+export const addressSchema = z.object({
   first_name: z.string(),
   last_name: z.string(),
   address_1: z.string(),
@@ -135,9 +135,9 @@ export const orderSchema = z.object({
   set_paid: z.boolean(),
   billing: addressSchema,
   line_items: z.array(lineItemSchema),
-  shipping_lines: z.array(shippingLineSchema),
+  shipping_lines: z.array(shippingLineSchema).optional(),
   order_note: z.string().optional(),
-  includeCouponLines: z.boolean(),
+  includeCouponLines: z.boolean().optional(),
   coupon_lines: z
     .object({
       code: z.string(),
@@ -184,4 +184,16 @@ export const buyInBulkSchema = z.object({
   estimated_qty: z.string().optional(),
   shipping_destination: z.string().optional(),
   notes: z.string().optional(),
+});
+
+export const newsletterFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required.",
+    })
+    .email({
+      message: "Email is not valid",
+    }),
+  // terms: z.boolean(),
 });

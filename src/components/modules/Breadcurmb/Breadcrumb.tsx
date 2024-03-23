@@ -12,7 +12,6 @@ type TProps = {
 };
 
 const Breadcrumb = ({ items }: TProps) => {
-  console.log("items", items);
   return (
     <div className="breadcrumb py-2 mb-4">
       <div className="flex items-center space-x-1 text-base text-muted-foreground">

@@ -5,6 +5,7 @@ const config = {
   wpUrl: process.env.NEXT_PUBLIC_WP_BASE_URL,
   consumerKey: process.env.NEXT_PUBLIC_WOO_CONSUMER_KEY,
   consumerSecret: process.env.NEXT_PUBLIC_WOO_CONSUMER_SECRET,
+  mlUrl: process.env.NEXT_PUBLIC_ML_BASE_URL,
 };
 
 export default config;

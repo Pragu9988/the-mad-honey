@@ -28,7 +28,6 @@ type TProps = {
 
 const CustomerUpdateForm = ({ fullWidth }: TProps) => {
   const { user, setUser, loading, setLoading } = useAuth();
-  console.log("user", user);
 
   const { toast } = useToast();
 

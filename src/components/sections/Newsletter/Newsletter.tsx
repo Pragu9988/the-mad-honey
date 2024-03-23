@@ -9,6 +9,21 @@ import { scrollUpVariants } from "@/utils/framer.utils";
 import { Mail, MoveRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { newsletterFormSchema } from "@/utils/formSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { newsletterSubscribe } from "@/services/newsletter.service";
+import { z } from "zod";
 
 interface NewsletterInterface {
   data?: any;
@@ -17,6 +32,25 @@ interface NewsletterInterface {
 const MotionButton = motion(Button);
 
 const Newsletter: React.FC<NewsletterInterface> = ({ data }) => {
+  const { toast } = useToast();
+
+  const form = useForm<z.infer<typeof newsletterFormSchema>>({
+    resolver: zodResolver(newsletterFormSchema),
+    defaultValues: {
+      email: "",
+      // terms: false,
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof newsletterFormSchema>) {
+    console.log("values", values);
+    const response = await newsletterSubscribe(values.email);
+    if (response) {
+      toast({
+        description: "Form Submission complete. We will get back to you soon.",
+      });
+    }
+  }
   return (
     <section
       className="call-to-action py-16 md:py-24 bg-cover relative"
@@ -42,30 +76,64 @@ const Newsletter: React.FC<NewsletterInterface> = ({ data }) => {
             >
               Get the hottest deals and exclusive offers sent directly to you.
             </motion.div>
-            <div className="flex w-full items-center space-x-2 bg-white p-2 pl-4 rounded">
-              <Mail className="text-neutral-500" size={32} />
-              <Input
-                type="email"
-                placeholder="Email"
-                className=" border-none focus:ring-0"
-              />
-              <Button type="submit">Subscribe</Button>
-            </div>
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms1" className="border-white" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms1"
-                  className="text-xs font-medium leading-none text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  By subscribing to newsletters, you agree to the processing
-                  personal data and profiling for the purpose of sending
-                  personalized marketing offers and you declare that you have
-                  become familiar with the Information on the processing of
-                  personal data.
-                </label>
-              </div>
-            </div>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-4"
+              >
+                <div className="flex w-full items-center space-x-2 bg-white p-2 pl-4 rounded relative">
+                  <Mail className="text-neutral-500" size={32} />
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem className="w-full">
+                        <FormControl>
+                          <Input
+                            className="border-none focus:ring-0 focus-visible:ring-0 text-gray-700"
+                            type="email"
+                            id="email"
+                            placeholder="Email Address"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage className="absolute -bottom-8" />
+                      </FormItem>
+                    )}
+                  ></FormField>
+                  <Button type="submit">Subscribe</Button>
+                </div>
+                <div className="items-top flex space-x-2">
+                  {/* <FormField
+                    control={form.control}
+                    name="terms"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Checkbox
+                            className="border-white"
+                            id="terms"
+                            checked={field.value}
+                            onCheckedChange={field.onChange}
+                          />
+                        </FormControl>
+                        <FormLabel
+                          htmlFor="terms"
+                          className="text-xs font-medium leading-none text-white peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          By subscribing to newsletters, you agree to the
+                          processing personal data and profiling for the purpose
+                          of sending personalized marketing offers and you
+                          declare that you have become familiar with the
+                          Information on the processing of personal data.
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  ></FormField> */}
+                </div>
+              </form>
+            </Form>
           </div>
           <div className="ims-col-12 ims-col-lg-7 -order-1"></div>
         </div>

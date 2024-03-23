@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import { Montserrat, Karla } from "next/font/google";
 import Header from "@/components/modules/Header/Header";
 import Footer from "@/components/modules/Footer/Footer";
 import SubscribeCta from "@/components/sections/Newsletter";
 import "@/assets/scss/main.scss";
 import TanstackProvider from "@/providers/tanstack.provider";
+import type { Metadata, ResolvingMetadata } from "next";
 
 const primary = Montserrat({
   subsets: ["latin"],

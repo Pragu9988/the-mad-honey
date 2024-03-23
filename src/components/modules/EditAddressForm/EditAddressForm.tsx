@@ -40,7 +40,6 @@ const EditAddressForm = ({ title, setOpen }: TProps) => {
   });
 
   function onSubmit(values: any) {
-    console.log("values", values);
     if (isBilling) {
       const data = {
         billing: {
@@ -62,7 +61,6 @@ const EditAddressForm = ({ title, setOpen }: TProps) => {
     setLoading(true);
     try {
       const res = await updateCustomer(data);
-      console.log("res", res);
       if (res.status == 200) {
         setUser(res.data);
         setOpen(false);
