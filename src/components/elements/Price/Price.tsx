@@ -19,7 +19,7 @@ const Price = ({
   const formatPrice = (value: any) => `$ ${inCent ? value / 100 : value}`;
 
   return (
-    <div className={cn(className, "price flex items-center gap-4 flex-wrap")}>
+    <div className={cn(className, "price flex items-center gap-4 flex-wrap text-2xl")}>
       {!regularPrice && !salePrice ? (
         <dd>
           <span className="price--sale font-semibold" data-sale-price="">

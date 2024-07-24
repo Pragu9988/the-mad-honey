@@ -15,7 +15,7 @@ const fetchPosts = async (params: Record<string, any>): Promise<any> => {
 };
 
 const usePosts = (
-  initialData?: any,
+  initialData = null,
   params: Record<string, any> = {}
 ): UseQueryResult<IPost[], Error> => {
   return useQuery({

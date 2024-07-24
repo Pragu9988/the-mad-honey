@@ -304,3 +304,16 @@ export interface IPost {
   categories: number[];
   tags: any[]; // You might want to replace this with the appropriate type for tags if available
 }
+
+export interface IPage {
+  id: number | string;
+  content: {
+    rendered?: string;
+  };
+  excerpt?: {
+    rendered?: string;
+  };
+  title: {
+    rendered?: string;
+  };
+}

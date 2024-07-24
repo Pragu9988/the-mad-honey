@@ -67,7 +67,7 @@ const CardBlog = ({ blog, className, type, alignment }: TProps) => {
             <h3 className={`title font-medium`}>{blog.title.rendered}</h3>
           </Anchor>
           <div
-            className="excerpt"
+            className="excerpt line-clamp-2"
             dangerouslySetInnerHTML={{
               __html: sanitize(blog.excerpt.rendered),
             }}

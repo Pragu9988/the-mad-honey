@@ -31,6 +31,7 @@ type TProps = VariantProps<typeof columnVariants> & {
   isVideo?: boolean;
   videoUrl?: string;
   textFirst?: boolean;
+  children?: React.ReactNode;
 };
 
 const TwoColumn = ({
@@ -47,6 +48,7 @@ const TwoColumn = ({
   isVideo,
   videoUrl,
   textFirst,
+  children,
 }: TProps) => {
   return (
     <section className="introduction py-8 md:py-10 lg:py-20">
@@ -89,7 +91,7 @@ const TwoColumn = ({
           <div
             className={cn(
               "col-span-1 md:col-span-2 align-middle",
-              textFirst ? "-order-1 lg:col-span-3" : "lg:col-span-2.5"
+              textFirst ? "-order-1 lg:col-span-3" : "lg:col-span-3"
             )}
           >
             <div className="col-module__content tw-ml-0 lg:tw-ml-10 space-y-6">
@@ -101,6 +103,7 @@ const TwoColumn = ({
                   __html: content,
                 }}
               />
+              {children}
               {btn
                 ? btn
                 : btnLabel && (

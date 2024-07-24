@@ -10,6 +10,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import SliderSlide from "../../modules/SliderSlide/SliderSlide";
 
 import heroBannerImg from "@/assets/images/hero-banner.jpg";
+import herBannerImg1 from "@/assets/images/honey-banner.png";
 
 const sliderVariants = cva("hero-banner-slider", {
   variants: {
@@ -45,10 +46,10 @@ const HeroSlider = ({ className, layout, slides }: TProps) => {
             clickable: true,
           }}
           speed={1000}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 3000,
+          //   disableOnInteraction: false,
+          // }}
           modules={[Pagination, Autoplay]}
           className="swiper banner-swiper"
         >
@@ -64,10 +65,30 @@ const HeroSlider = ({ className, layout, slides }: TProps) => {
             >
               <SliderSlide
                 showContent={true}
-                title={"The untouched purity of Nepal's wilderness"}
+                title={
+                  "Welcome to <span class='text-secondary'>HIMALAYAN MAD HONEY</span> Shop"
+                }
                 variant={"center_text"}
-                btnLabel={"Buy Now"}
-                btnPath={"/"}
+                btnLabel={"Shop Now"}
+                btnPath={"/shop"}
+                imgSrc={herBannerImg1}
+                // mblImgSrc={slide?.thumbnailImage?.sourceUrl}
+              />
+            </SwiperSlide>
+            <SwiperSlide
+              className={cn(
+                true ? "banner__slide--both" : "banner__slide--deskonly"
+              )}
+              // key={slideIndex?.toString()}
+            >
+              <SliderSlide
+                showContent={true}
+                title={
+                  "The Untouched Purity of <span class='text-secondary'>Nepal's</span> Wilderness"
+                }
+                variant={"center_text"}
+                btnLabel={"About Us"}
+                btnPath={"/about-us"}
                 imgSrc={heroBannerImg}
                 // mblImgSrc={slide?.thumbnailImage?.sourceUrl}
               />

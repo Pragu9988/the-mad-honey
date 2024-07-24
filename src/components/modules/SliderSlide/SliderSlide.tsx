@@ -82,7 +82,7 @@ const SliderSlide = ({
                     }}
                   >
                     <h1
-                      className="title"
+                      className="title drop-shadow"
                       dangerouslySetInnerHTML={{
                         __html: sanitize(title),
                       }}
@@ -101,7 +101,7 @@ const SliderSlide = ({
                 )}
                 {btnLabel ? (
                   <Anchor path={"/"} target="_self">
-                    <Button size={"sm"} variant={"white"}>
+                    <Button variant={"white"}>
                       {btnLabel}
                     </Button>
                   </Anchor>

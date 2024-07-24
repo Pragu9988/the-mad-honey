@@ -45,7 +45,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     z-index: var(--zAbove);
   }
 
@@ -190,9 +190,11 @@
     @include mq("lg") {
       & h1 {
         color: var(--clr-neutral-0);
+        font-weight: normal;
 
         & > span {
-          color: var(--clr-neutral-0);
+          // color: var(--clr-secondary-400);
+          font-weight: 700;
         }
       }
       .subtitle {

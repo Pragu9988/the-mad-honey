@@ -68,7 +68,7 @@ const CardProduct = ({ product, className, type, alignment }: TProps) => {
           )}
         >
           <Anchor path={`/product/${product.slug}`} target="_self">
-            <h3 className={`title`}>{product.name}</h3>
+            <h3 className={`title text-lg`}>{product.name}</h3>
           </Anchor>
           <div className="price-container">
             <Price

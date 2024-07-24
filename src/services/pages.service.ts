@@ -12,6 +12,7 @@ const fetchPageById = async (id?: number): Promise<any> => {
 };
 
 const fetchPages = async (params: Record<string, any>): Promise<any> => {
+  console.log("pages", params);
   try {
     const response = await publicBase.get(WP_PAGES_EP, {
       params: params,
@@ -27,10 +28,21 @@ const usePageById = (
   id?: number
 ): UseQueryResult<any, Error> => {
   return useQuery({
-    queryKey: ["pages", id],
+    queryKey: ["page", id],
     queryFn: () => fetchPageById(id),
     initialData: initialData !== null ? initialData : undefined,
   });
 };
 
-export { fetchPageById, usePageById, fetchPages };
+const usePages = (
+  params?: any,
+  initialData = null
+): UseQueryResult<any, Error> => {
+  return useQuery({
+    queryKey: ["pages", params],
+    queryFn: () => fetchPages(params),
+    initialData: initialData !== null ? initialData : undefined,
+  });
+};
+
+export { fetchPageById, usePageById, fetchPages, usePages };
