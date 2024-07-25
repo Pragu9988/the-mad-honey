@@ -23,15 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${primary.variable} ${accent.variable}`}>
-        <TanstackProvider>
-          <Header />
-          <main className="main">{children}</main>
-          <SubscribeCta />
-          <Footer />
-        </TanstackProvider>
-      </body>
-    </html>
+    <>
+      <Header />
+      <main className="main">{children}</main>
+      <SubscribeCta />
+      <Footer />
+    </>
   );
 }

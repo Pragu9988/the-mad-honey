@@ -58,14 +58,7 @@ const SliderSlide = ({
     <div className={cn(bannerVariants({ variant, textColor, className }))}>
       <div className="hero-banner-slide__background">
         <div className="hero-banner-slide__overlay"></div>
-        {imgSrc && (
-          <Image
-            src={imgSrc}
-            alt={"banner image"}
-            fill
-            priority
-          />
-        )}
+        {imgSrc && <Image src={imgSrc} alt={"banner image"} fill priority />}
       </div>
       <div className="hmh-container hero-banner-slide__content h-full">
         <div className="flex justify-center items-center h-full">
@@ -100,10 +93,8 @@ const SliderSlide = ({
                   />
                 )}
                 {btnLabel ? (
-                  <Anchor path={"/"} target="_self">
-                    <Button variant={"white"}>
-                      {btnLabel}
-                    </Button>
+                  <Anchor path={btnPath ?? "#"} target="_self">
+                    <Button variant={"white"}>{btnLabel}</Button>
                   </Anchor>
                 ) : (
                   <></>

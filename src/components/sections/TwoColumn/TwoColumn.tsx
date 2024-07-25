@@ -108,7 +108,7 @@ const TwoColumn = ({
                 ? btn
                 : btnLabel && (
                     <Anchor
-                      path={btnLink ? `/ ` : "#"}
+                      path={btnLink ?? "#"}
                       target="_self"
                       className="inline-block"
                     >

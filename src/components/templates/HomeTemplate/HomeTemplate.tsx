@@ -5,6 +5,7 @@ import CoreValues from "@/components/sections/CoreValues";
 import TwoColumn from "@/components/sections/TwoColumn";
 
 import introBannerImg from "@/assets/images/intro-image.jpg";
+import termOfUseImg from "@/assets/images/terms-of-use.jpg";
 import Testimonials from "@/components/sections/Testimonials/Testimonials";
 import BlogGrid from "@/components/sections/BlogGrid/BlogGrid";
 import BuyInBulk from "@/components/sections/BuyInBulk";
@@ -30,7 +31,7 @@ const HomeTemplate = () => {
       <BlogGrid />
       <TwoColumn
         title="Effects of Himalayan Mad Honey"
-        imgSrc={introBannerImg}
+        imgSrc={termOfUseImg}
         btnLabel="Terms of Use"
         btnLink="/terms-and-conditions"
         content={
