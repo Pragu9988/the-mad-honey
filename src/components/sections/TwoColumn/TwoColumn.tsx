@@ -104,22 +104,20 @@ const TwoColumn = ({
                 }}
               />
               {children}
-              {btn
-                ? btn
-                : btnLabel && (
-                    <Anchor
-                      path={btnLink ?? "#"}
-                      target="_self"
-                      className="inline-block"
-                    >
-                      <Button
-                        className="tw-mt-6 btn btn-primary"
-                        variant={"accent"}
-                      >
-                        {btnLabel}
-                      </Button>
-                    </Anchor>
-                  )}
+              {btnLabel && (
+                <Anchor
+                  path={btnLink ?? "#"}
+                  target="_self"
+                  className="inline-block"
+                >
+                  <Button
+                    className="tw-mt-6 btn btn-primary"
+                    variant={"accent"}
+                  >
+                    {btnLabel}
+                  </Button>
+                </Anchor>
+              )}
             </div>
           </div>
         </div>

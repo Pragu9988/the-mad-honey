@@ -19,22 +19,22 @@ export async function generateMetadata({
   console.log("reddd", response);
 
   return {
-    title: response.yoast_head_json?.title ?? "",
-    description: response.yoast_head_json?.description ?? "",
+    title: response?.yoast_head_json?.title ?? "",
+    description: response?.yoast_head_json?.description ?? "",
     openGraph: {
-      type: response.yoast_head_json?.og_type ?? "article",
-      url: response.yoast_head_json?.og_url ?? "",
-      title: response.yoast_head_json?.og_title ?? "",
-      description: response.yoast_head_json?.og_description ?? "",
-      locale: response.yoast_head_json?.og_locale ?? "",
-      siteName: response.yoast_head_json?.og_site_name ?? "",
-      images: response.yoast_head_json?.og_image ?? "",
+      type: response?.yoast_head_json?.og_type ?? "article",
+      url: response?.yoast_head_json?.og_url ?? "",
+      title: response?.yoast_head_json?.og_title ?? "",
+      description: response?.yoast_head_json?.og_description ?? "",
+      locale: response?.yoast_head_json?.og_locale ?? "",
+      siteName: response?.yoast_head_json?.og_site_name ?? "",
+      images: response?.yoast_head_json?.og_image ?? "",
     },
     twitter: {
-      card: response.yoast_head_json?.twitter_card ?? "",
-      site: response.yoast_head_json?.og_image ?? "",
+      card: response?.yoast_head_json?.twitter_card ?? "",
+      site: response?.yoast_head_json?.og_image ?? "",
       creator: "@creator",
-      images: response.yoast_head_json?.twitter_image ?? "",
+      images: response?.yoast_head_json?.twitter_image ?? "",
     },
   };
 }

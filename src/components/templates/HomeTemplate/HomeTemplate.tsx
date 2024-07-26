@@ -33,7 +33,7 @@ const HomeTemplate = () => {
         title="Effects of Himalayan Mad Honey"
         imgSrc={termOfUseImg}
         btnLabel="Terms of Use"
-        btnLink="/terms-and-conditions"
+        btnLink="/terms-conditions"
         content={
           "Mad honey, derived from the nectar of Rhododendron flowers, is renowned for its unique properties and potent effects. While it offers a range of health benefits, it's crucial to understand its effects and usage guidelines."
         }

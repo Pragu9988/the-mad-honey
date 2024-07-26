@@ -9,7 +9,7 @@ import SkeletonPostCard from "@/components/modules/Skeleton/SkeletonPostCard";
 
 const BlogGrid = () => {
   const params: Record<string, any> = {
-    per_page: 4,
+    per_page: 3,
   };
   const {
     data: blogs,
