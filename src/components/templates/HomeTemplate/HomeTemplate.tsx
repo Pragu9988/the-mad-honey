@@ -10,6 +10,9 @@ import Testimonials from "@/components/sections/Testimonials/Testimonials";
 import BlogGrid from "@/components/sections/BlogGrid/BlogGrid";
 import BuyInBulk from "@/components/sections/BuyInBulk";
 import honeyBottles from "@/assets/images/honey-bottles.png";
+import buyBulkImg from "@/assets/images/bulk-order.png";
+import honeyHuntingImg from "@/assets/images/honey-hunting.png"
+import honeyHarvestingImg from "@/assets/images/honey-harvesting.png"
 
 const HomeTemplate = () => {
   return (
@@ -17,7 +20,7 @@ const HomeTemplate = () => {
       <HeroSlider />
       <TwoColumn
         title="Discover the perfect mad honey for you"
-        imgSrc={introBannerImg}
+        imgSrc={honeyHuntingImg}
         btnLabel="Show Now"
         btnLink="/products"
         content={
@@ -27,11 +30,11 @@ const HomeTemplate = () => {
       <CoreValues />
       <FeaturedProductGrid />
       <Testimonials />
-      <BuyInBulk imgSrc={honeyBottles} />
+      <BuyInBulk imgSrc={buyBulkImg} />
       <BlogGrid />
       <TwoColumn
         title="Effects of Himalayan Mad Honey"
-        imgSrc={termOfUseImg}
+        imgSrc={honeyHarvestingImg}
         btnLabel="Terms of Use"
         btnLink="/terms-of-use"
         content={

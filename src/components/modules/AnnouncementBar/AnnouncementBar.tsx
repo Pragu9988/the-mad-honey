@@ -30,9 +30,13 @@ const AnnouncementBar = ({ handleRemoveAnnouncement }: TProps) => {
                       className="facebook-link"
                       target="_blank"
                       rel="noopener"
-                      href="https://www.facebook.com/aminu.life"
+                      href="https://www.facebook.com/nepalimadhoney"
                     >
-                      <FacebookIcon size={14} strokeWidth={1.5} />
+                      <FacebookIcon
+                        size={14}
+                        strokeWidth={1.5}
+                        className="text-white hover:text-primary"
+                      />
                     </a>
                   </li>
                   <li>
@@ -41,9 +45,13 @@ const AnnouncementBar = ({ handleRemoveAnnouncement }: TProps) => {
                       className="instagram-link"
                       target="_blank"
                       rel="noopener"
-                      href="https://www.instagram.com/aminu.life/?igshid=37u75edqcu7y"
+                      href="https://www.instagram.com/nepalimadhoney"
                     >
-                      <InstagramIcon size={14} strokeWidth={1.5} />
+                      <InstagramIcon
+                        size={14}
+                        strokeWidth={1.5}
+                        className="text-white hover:text-primary"
+                      />
                     </a>
                   </li>
                 </ul>

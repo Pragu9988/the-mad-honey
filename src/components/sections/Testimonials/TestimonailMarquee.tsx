@@ -7,6 +7,7 @@ import { cn } from "@/utils/cn.utils";
 import profile1Img from "@/assets/images/testimonials/ramesh.png";
 import profile2Img from "@/assets/images/testimonials/priya-singh.png";
 import profile3Img from "@/assets/images/testimonials/mahesh.png";
+import userSilImg from "@/assets/images/user-sil.jpg";
 
 // import { FaQuoteRight } from "react-icons/fa";
 import { Quote } from "lucide-react";
@@ -16,24 +17,31 @@ import CardTestimonial from "@/components/modules/Cards/CardTestimonial";
 const cards = [
   {
     id: 1,
-    name: "Rahul Verma",
-    say: "I've been a sports lover all my life, and Baazi Sports has taken my passion to the next level. Their real-time fantasy games keep me on the edge of my seat, and the affordable entry fees make it accessible for everyone. The variety of deals they offer adds an exciting twist to the gameplay. Plus, the VIP rewards have given me a chance to experience the game like a true champion. Baazi Sports is my go-to platform for immersive sports entertainment!",
+    name: "Rajan Pradhan, Kathmandu",
+    say: "Himalayan Mad Honey has redefined my expectations of honey. The rich texture paired with its distinctively wild flavor is simply unmatched. It’s not just about sweetness; it’s about experiencing a connection to the purity of the Himalayas with every spoonful. This honey is a true gem.",
     profile: "profile1",
     rating: 5,
   },
   {
     id: 2,
-    name: "Priya Singh",
-    say: "As a student, I always thought fantasy sports were complex and expensive. But Baazi Sports changed my perception entirely. The lowest entry option means I can participate without breaking the bank. The multiple offers keep things fresh and engaging, and I'm always on the lookout for the best deals. The VIP rewards are like the cherry on top - they make me feel valued as a player. Thanks to Baazi Sports, I now have a fun and affordable way to indulge in my love for sports!",
+    name: "Anju Sharma, Pokhara",
+    say: "There’s something special about Himalayan Mad Honey that makes it stand out. The taste is pure and earthy, with a natural sweetness that feels both nourishing and indulgent. I love that it’s crafted from the untouched Himalayan wilderness, bringing a piece of that serenity into my home.",
     profile: "profile2",
     rating: 4.5,
   },
   {
     id: 3,
-    name: "Aman Patel",
-    say: "Baazi Sports has redefined how I experience sports. Their live fantasy games add an element of excitement that I never knew I was missing. The affordable entry fee makes it easy for me to join in regularly. The variety of offers keeps the game interesting, and I'm always exploring new ways to enhance my gameplay. The VIP rewards program is a fantastic touch, giving me extra incentives to aim for the top spot. Baazi Sports truly knows how to cater to sports enthusiasts like me!",
-    profile: "profile3",
+    name: "Emily Thompson, USA",
+    say: "The moment I tasted Himalayan Mad Honey, I knew it was something rare. Its bold, complex flavor is unlike anything I’ve ever had, with a hint of wildness that keeps me coming back for more. It feels like you’re tasting the very essence of the Himalayas, preserved in its purest form.",
+    profile: "user",
     rating: 4,
+  },
+  {
+    id: 4,
+    name: "Liam Bennett, UK",
+    say: "Himalayan Mad Honey is more than just honey – it’s an experience. The deep, rich taste has a unique character that’s both soothing and invigorating. I love knowing that this honey comes from such a pristine environment, and every spoonful reminds me of the natural beauty of the Himalayas.",
+    profile: "user",
+    rating: 4.5,
   },
 ];
 
@@ -63,6 +71,15 @@ const profiles: ProfileType = {
   profile3: (
     <Image
       src={profile3Img}
+      className="rounded-xl"
+      alt="profile3"
+      width={72}
+      height={72}
+    />
+  ),
+  user: (
+    <Image
+      src={userSilImg}
       className="rounded-xl"
       alt="profile3"
       width={72}
