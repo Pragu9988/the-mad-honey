@@ -50,10 +50,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
   console.log("data", response);
   return (
     <>
+      <IntroBanner title={response[0]?.title.rendered} image={aboutBannerImg} />
       <DefaultTemplate
-        title={response[0].title}
-        content={response[0].content}
-        id={response[0].id}
+        title={response[0]?.title}
+        content={response[0]?.content}
+        id={response[0]?.id}
       />
     </>
   );
